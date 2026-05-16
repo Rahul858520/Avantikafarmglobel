@@ -23,7 +23,6 @@ const Navbar = ({ onOpenInquiry }) => {
     { name: 'About Us', href: '#about' },
     { name: 'Products', href: '#products' },
     { name: 'Export Process', href: '#process' },
-    { name: 'Gallery', href: '#gallery' },
     { name: 'Contact', href: '#contact' },
   ];
 

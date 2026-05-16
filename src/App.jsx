@@ -12,7 +12,6 @@ import Products from './components/Products';
 import ExportProcess from './components/ExportProcess';
 import TrustSection from './components/TrustSection';
 import GlobalExport from './components/GlobalExport';
-import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ProductModal from './components/ProductModal';
@@ -67,9 +66,6 @@ function App() {
 
             {/* Global Export Section */}
             <GlobalExport />
-
-            {/* Gallery Section */}
-            <Gallery />
 
             {/* Contact Section */}
             <Contact />

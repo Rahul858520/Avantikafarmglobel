@@ -43,7 +43,7 @@ const Footer = () => {
           <div>
             <h4 className="font-extrabold text-lg text-white mb-6 border-b border-[#8BC34A]/30 pb-2 inline-block">Quick Links</h4>
             <ul className="space-y-3 text-sm text-[#F8F5EC]/80">
-              {['Home', 'About Us', 'Products', 'Export Process', 'Gallery', 'Contact'].map((link, i) => (
+              {['Home', 'About Us', 'Products', 'Export Process', 'Contact'].map((link, i) => (
                 <li key={i}>
                   <a href={`#${link.toLowerCase().replace(' ', '')}`} className="hover:text-[#8BC34A] transition-colors flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#8BC34A]"></span>
