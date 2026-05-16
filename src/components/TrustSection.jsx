@@ -1,43 +1,74 @@
-
-import { motion } from 'framer-motion';
-import { FaShieldAlt, FaAward, FaBuilding, FaComments, FaHandshake, FaGlobe, FaQuoteLeft, FaStar } from 'react-icons/fa';
+import { motion } from "framer-motion";
+import {
+  FaShieldAlt,
+  FaAward,
+  FaBuilding,
+  FaComments,
+  FaHandshake,
+  FaGlobe,
+  FaQuoteLeft,
+  FaStar,
+} from "react-icons/fa";
 
 const TrustSection = () => {
   const trustPillars = [
-    { icon: FaAward, title: '40+ Years Legacy', desc: 'Backed by Shree Mangalmurti Traders (Est. 1985), providing four decades of steady supply chain credibility.' },
-    { icon: FaBuilding, title: 'Physical Presence', desc: 'Direct operations and packhouses in major Indian agricultural hubs like Nashik.' },
-    { icon: FaComments, title: 'Transparent Communication', desc: 'Real-time updates, clear grading reports, and honest documentation at every stage.' },
-    { icon: FaHandshake, title: 'Trial Shipment Flexibility', desc: 'Flexible initial container volumes to establish mutual confidence and quality verification.' },
-    { icon: FaGlobe, title: 'Long-Term Mindset', desc: 'Dedicated to building enduring, win-win global partnerships rather than one-off trades.' },
+    {
+      icon: FaAward,
+      title: "40+ Years Legacy",
+      desc: "Backed by Shree Mangalmurti Traders (Est. 1985), providing four decades of steady supply chain credibility.",
+    },
+    {
+      icon: FaBuilding,
+      title: "Physical Presence",
+      desc: "Direct operations and packhouses in major Indian agricultural hubs like Nashik.",
+    },
+    {
+      icon: FaComments,
+      title: "Transparent Communication",
+      desc: "Real-time updates, clear grading reports, and honest documentation at every stage.",
+    },
+    {
+      icon: FaHandshake,
+      title: "Trial Shipment Flexibility",
+      desc: "Flexible initial container volumes to establish mutual confidence and quality verification.",
+    },
+    {
+      icon: FaGlobe,
+      title: "Long-Term Mindset",
+      desc: "Dedicated to building enduring, win-win global partnerships rather than one-off trades.",
+    },
   ];
 
   const certs = [
-    { name: 'APEDA Certified', code: 'Export Promotion Council' },
-    { name: 'GLOBALG.A.P.', code: 'Good Agricultural Practices' },
-    { name: 'ISO 9001:2015', code: 'Quality Management System' },
-    { name: 'FSSAI Approved', code: 'Food Safety Standard' },
-    { name: 'Phytosanitary Compliant', code: 'Plant Quarantine Standard' },
+    { name: "APEDA Certified", code: "Export Promotion Council" },
+    { name: "GLOBALG.A.P.", code: "Good Agricultural Practices" },
+    { name: "ISO 9001:2015", code: "Quality Management System" },
+    { name: "FSSAI Approved", code: "Food Safety Standard" },
+    { name: "Phytosanitary Compliant", code: "Plant Quarantine Standard" },
   ];
 
   const testimonials = [
     {
-      quote: "Avantika Farm Globe has been our most reliable onion exporter from India. Their Garva onions arrive in Dubai with zero spoilage. The grading is absolutely flawless.",
+      quote:
+        "Avantika Farm Globe has been our most reliable onion exporter from India. Their Garva onions arrive in Dubai with zero spoilage. The grading is absolutely flawless.",
       client: "Ahmed Al-Mansoor",
       company: "Al-Mansoor Agri Import, UAE",
-      rating: 5
+      rating: 5,
     },
     {
-      quote: "We import Lady Rosetta potatoes for our potato chips factory in Malaysia. Avantika's dry matter consistency and timely shipment have significantly boosted our production yield.",
+      quote:
+        "We import Lady Rosetta potatoes for our potato chips factory in Malaysia. Avantika's dry matter consistency and timely shipment have significantly boosted our production yield.",
       client: "David Tan",
       company: "CrispTech Foods, Malaysia",
-      rating: 5
+      rating: 5,
     },
     {
-      quote: "The trial shipment flexibility allowed us to test their quality first. Now we order 10 containers every month. A truly transparent and professional Indian export partner.",
+      quote:
+        "The trial shipment flexibility allowed us to test their quality first. Now we order 10 containers every month. A truly transparent and professional Indian export partner.",
       client: "Elena Rostova",
       company: "EuroFresh Produce, Netherlands",
-      rating: 5
-    }
+      rating: 5,
+    },
   ];
 
   return (
@@ -60,7 +91,8 @@ const TrustSection = () => {
             Why Global Buyers <span className="text-[#8BC34A]">Trust Us</span>
           </h2>
           <p className="mt-4 text-lg text-[#F8F5EC]/80 font-light">
-            Building enduring international partnerships founded on four decades of agricultural integrity.
+            Building enduring international partnerships founded on four decades
+            of agricultural integrity.
           </p>
         </motion.div>
 
@@ -78,8 +110,12 @@ const TrustSection = () => {
               <div className="w-14 h-14 rounded-2xl bg-[#3E7C17]/40 border border-[#8BC34A]/30 flex items-center justify-center text-[#8BC34A] mb-6 shadow-md group-hover:scale-110 transition-transform">
                 <pillar.icon className="text-2xl" />
               </div>
-              <h4 className="text-white font-bold text-lg mb-2 group-hover:text-[#8BC34A] transition-colors">{pillar.title}</h4>
-              <p className="text-[#F8F5EC]/70 text-xs sm:text-sm leading-relaxed">{pillar.desc}</p>
+              <h4 className="text-white font-bold text-lg mb-2 group-hover:text-[#8BC34A] transition-colors">
+                {pillar.title}
+              </h4>
+              <p className="text-[#F8F5EC]/70 text-xs sm:text-sm leading-relaxed">
+                {pillar.desc}
+              </p>
             </motion.div>
           ))}
         </div>
@@ -90,15 +126,27 @@ const TrustSection = () => {
             <div className="text-center md:text-left">
               <div className="flex items-center gap-3 justify-center md:justify-start">
                 <FaShieldAlt className="text-3xl text-[#8BC34A]" />
-                <h3 className="text-2xl font-extrabold text-white">Global Compliance & Certifications</h3>
+                <h3 className="text-2xl font-extrabold text-white">
+                  Global Compliance & Certifications
+                </h3>
               </div>
-              <p className="text-[#F8F5EC]/80 text-sm mt-1">Guaranteed adherence to international food safety and phytosanitary standards.</p>
+              <p className="text-[#F8F5EC]/80 text-sm mt-1">
+                Guaranteed adherence to international food safety and
+                phytosanitary standards.
+              </p>
             </div>
             <div className="flex flex-wrap gap-4 items-center justify-center md:justify-end">
               {certs.map((cert, index) => (
-                <div key={index} className="bg-black/40 border border-white/20 px-5 py-3 rounded-2xl text-center shadow-md hover:border-[#8BC34A] transition-colors group">
-                  <span className="block font-extrabold text-white text-sm group-hover:text-[#8BC34A] transition-colors">{cert.name}</span>
-                  <span className="block text-[10px] text-[#F8F5EC]/60 uppercase tracking-widest mt-0.5">{cert.code}</span>
+                <div
+                  key={index}
+                  className="bg-black/40 border border-white/20 px-5 py-3 rounded-2xl text-center shadow-md hover:border-[#8BC34A] transition-colors group"
+                >
+                  <span className="block font-extrabold text-white text-sm group-hover:text-[#8BC34A] transition-colors">
+                    {cert.name}
+                  </span>
+                  <span className="block text-[10px] text-[#F8F5EC]/60 uppercase tracking-widest mt-0.5">
+                    {cert.code}
+                  </span>
                 </div>
               ))}
             </div>
@@ -108,8 +156,13 @@ const TrustSection = () => {
         {/* Animated Testimonials Section */}
         <div>
           <div className="text-center mb-12">
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-white">Client Satisfaction & Testimonials</h3>
-            <p className="text-[#F8F5EC]/70 text-sm mt-1">What our international importing partners say about our quality and commitment.</p>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+              Client Satisfaction & Testimonials
+            </h3>
+            <p className="text-[#F8F5EC]/70 text-sm mt-1">
+              What our international importing partners say about our quality
+              and commitment.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -123,7 +176,7 @@ const TrustSection = () => {
                 className="bg-white/10 backdrop-blur-xl p-8 rounded-3xl border border-white/20 shadow-2xl flex flex-col justify-between relative group hover:border-[#8BC34A]/60 transition-all duration-500 hover:-translate-y-2"
               >
                 <FaQuoteLeft className="absolute top-6 right-6 text-4xl text-[#8BC34A]/20 group-hover:text-[#8BC34A]/40 transition-colors" />
-                
+
                 <div>
                   {/* Star Ratings */}
                   <div className="flex gap-1 mb-6 text-amber-400">
@@ -141,8 +194,12 @@ const TrustSection = () => {
                     {testi.client.charAt(0)}
                   </div>
                   <div>
-                    <h5 className="font-bold text-white text-base">{testi.client}</h5>
-                    <p className="text-[#8BC34A] text-xs font-semibold mt-0.5">{testi.company}</p>
+                    <h5 className="font-bold text-white text-base">
+                      {testi.client}
+                    </h5>
+                    <p className="text-[#8BC34A] text-xs font-semibold mt-0.5">
+                      {testi.company}
+                    </p>
                   </div>
                 </div>
               </motion.div>

@@ -1,14 +1,7 @@
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
-import {
-  FaArrowRight,
-  FaPhoneAlt,
-  FaAward,
-  FaUserCheck,
-  FaShippingFast,
-  FaSeedling,
-} from "react-icons/fa";
+import { FaArrowRight, FaPhoneAlt } from "react-icons/fa";
 import "swiper/css";
 import "swiper/css/effect-fade";
 
@@ -32,25 +25,6 @@ const slides = [
     image: "https://images.unsplash.com/photo-1551516230-889ebb6f0ba8?q=80&w=2000&auto=format&fit=crop",
     title: "Global Reefer Container Logistics",
     subtitle: "Advanced Cold Chain Oceanic Transit",
-  },
-];
-
-const stats = [
-  { icon: FaAward, title: "40+ Years Experience", desc: "Legacy since 1985" },
-  {
-    icon: FaSeedling,
-    title: "Export Quality Produce",
-    desc: "100% Certified Produce",
-  },
-  {
-    icon: FaUserCheck,
-    title: "Trusted Farmer Network",
-    desc: "Direct Sourcing Model",
-  },
-  {
-    icon: FaShippingFast,
-    title: "Global Supply Capability",
-    desc: "Timely Delivery Worldwide",
   },
 ];
 
@@ -155,41 +129,6 @@ const Hero = ({ onOpenInquiry }) => {
         </div>
       </section>
 
-      {/* Floating Export Stats Cards (Moved Under Hero Section) */}
-      <section className="bg-gradient-to-r from-[#3E2723] via-[#271714] to-[#3E2723] py-12 border-b border-[#8BC34A]/30 shadow-2xl relative z-20 bg-soil-texture overflow-hidden">
-        <div className="absolute inset-0 bg-black/50 backdrop-blur-xs" />
-        <div className="absolute -left-20 -top-20 w-60 h-60 bg-[#8BC34A]/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -right-20 -bottom-20 w-60 h-60 bg-[#3E7C17]/10 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
-          >
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="bg-white/5 backdrop-blur-2xl p-6 sm:p-8 rounded-3xl border border-white/10 flex items-center gap-6 hover:border-[#8BC34A] hover:bg-white/10 transition-all duration-500 group hover:-translate-y-2 shadow-xl hover:shadow-[0_20px_40px_rgba(139,195,74,0.15)]"
-              >
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#3E7C17]/50 to-[#8BC34A]/30 border border-[#8BC34A]/40 flex items-center justify-center text-[#8BC34A] flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-inner">
-                  <stat.icon className="text-3xl" />
-                </div>
-                <div>
-                  <h4 className="text-white font-extrabold text-lg sm:text-xl tracking-tight group-hover:text-[#8BC34A] transition-colors">
-                    {stat.title}
-                  </h4>
-                  <p className="text-[#F8F5EC]/70 text-xs sm:text-sm mt-1 font-light leading-snug">
-                    {stat.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
     </>
   );
 };
