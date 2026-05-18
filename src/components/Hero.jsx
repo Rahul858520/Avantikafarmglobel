@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
-import { FaArrowRight, FaPhoneAlt } from "react-icons/fa";
+import { FaArrowRight, FaPhoneAlt, FaArrowDown } from "react-icons/fa";
 import "swiper/css";
 import "swiper/css/effect-fade";
 
@@ -126,9 +126,31 @@ const Hero = ({ onOpenInquiry }) => {
               <span>Contact Us</span>
             </button>
           </motion.div>
+
+          {/* Scroll Indicator */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.0 }}
+            className="mt-16 flex flex-col items-center lg:items-start gap-3 cursor-pointer group"
+            onClick={() => {
+              const nextSection = document.getElementById('potato-scroll');
+              if (nextSection) nextSection.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            <div className="flex items-center gap-2 text-xs sm:text-sm font-extrabold text-[#8BC34A] tracking-widest uppercase">
+              <span>Scroll to discover our journey</span>
+            </div>
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+              className="w-10 h-10 bg-[#8BC34A]/20 border border-[#8BC34A]/50 rounded-full flex items-center justify-center text-[#8BC34A] group-hover:bg-[#8BC34A] group-hover:text-white transition-colors shadow-[0_0_20px_rgba(139,195,74,0.3)]"
+            >
+              <FaArrowDown className="text-sm" />
+            </motion.div>
+          </motion.div>
         </div>
       </section>
-
     </>
   );
 };

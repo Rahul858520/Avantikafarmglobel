@@ -5,6 +5,7 @@ import { AnimatePresence } from 'framer-motion';
 import LoadingScreen from './components/LoadingScreen';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import PotatoScrollSection from './components/PotatoScrollSection';
 import About from './components/About';
 import VisionMission from './components/VisionMission';
 import WhyChooseUs from './components/WhyChooseUs';
@@ -39,12 +40,15 @@ function App() {
         {loading ? (
           <LoadingScreen key="loading" onFinish={() => setLoading(false)} />
         ) : (
-          <div key="main-app" className="relative overflow-hidden">
+          <div key="main-app" className="relative">
             {/* Navbar */}
             <Navbar onOpenInquiry={() => handleOpenInquiry(null)} />
 
             {/* Hero Section */}
             <Hero onOpenInquiry={() => handleOpenInquiry(null)} />
+
+            {/* Potato Scroll Section */}
+            <PotatoScrollSection />
 
             {/* About Us Section */}
             <About />
