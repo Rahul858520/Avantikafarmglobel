@@ -7,22 +7,26 @@ import "swiper/css/effect-fade";
 
 const slides = [
   {
-    image: "https://images.unsplash.com/photo-1595855759920-86582396756a?q=80&w=2000&auto=format&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1595855759920-86582396756a?q=80&w=2000&auto=format&fit=crop",
     title: "Premium Fresh Potato Harvesting",
     subtitle: "Global Processing & Table Exports",
   },
   {
-    image: "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?q=80&w=2000&auto=format&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?q=80&w=2000&auto=format&fit=crop",
     title: "Export-Grade Red Onion Grading",
     subtitle: "Sourced from Nashik Garva Belts",
   },
   {
-    image: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?q=80&w=2000&auto=format&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1518977676601-b53f82aba655?q=80&w=2000&auto=format&fit=crop",
     title: "Pristine Lady Rosetta Potatoes",
     subtitle: "High Dry Matter for Global Snack Brands",
   },
   {
-    image: "https://images.unsplash.com/photo-1551516230-889ebb6f0ba8?q=80&w=2000&auto=format&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1551516230-889ebb6f0ba8?q=80&w=2000&auto=format&fit=crop",
     title: "Global Reefer Container Logistics",
     subtitle: "Advanced Cold Chain Oceanic Transit",
   },
@@ -59,8 +63,12 @@ const Hero = ({ onOpenInquiry }) => {
                     <span className="text-[10px] text-[#8BC34A] uppercase tracking-widest font-extrabold block mb-0.5 animate-pulse">
                       Live Infrastructure View
                     </span>
-                    <h4 className="text-lg font-extrabold text-white tracking-tight">{slide.title}</h4>
-                    <p className="text-xs text-[#F8F5EC]/70 font-medium mt-0.5">{slide.subtitle}</p>
+                    <h4 className="text-lg font-extrabold text-white tracking-tight">
+                      {slide.title}
+                    </h4>
+                    <p className="text-xs text-[#F8F5EC]/70 font-medium mt-0.5">
+                      {slide.subtitle}
+                    </p>
                   </div>
                 </div>
               </SwiperSlide>
@@ -101,7 +109,8 @@ const Hero = ({ onOpenInquiry }) => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mt-6 text-lg sm:text-xl lg:text-2xl text-[#F8F5EC]/90 font-light max-w-3xl leading-relaxed"
           >
-            Rooted in Experience. Growing Globally. Backed by the 40+ year legacy of Shree Mangalmurti Traders.
+            Rooted in Experience. Growing Globally. Backed by the 40+ year
+            legacy of Shree Mangalmurti Traders.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -134,8 +143,9 @@ const Hero = ({ onOpenInquiry }) => {
             transition={{ duration: 0.8, delay: 1.0 }}
             className="mt-16 flex flex-col items-center lg:items-start gap-3 cursor-pointer group"
             onClick={() => {
-              const nextSection = document.getElementById('potato-scroll');
-              if (nextSection) nextSection.scrollIntoView({ behavior: 'smooth' });
+              const nextSection = document.getElementById("potato-scroll");
+              if (nextSection)
+                nextSection.scrollIntoView({ behavior: "smooth" });
             }}
           >
             <div className="flex items-center gap-2 text-xs sm:text-sm font-extrabold text-[#8BC34A] tracking-widest uppercase">
@@ -143,7 +153,11 @@ const Hero = ({ onOpenInquiry }) => {
             </div>
             <motion.div
               animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+              transition={{
+                repeat: Infinity,
+                duration: 1.5,
+                ease: "easeInOut",
+              }}
               className="w-10 h-10 bg-[#8BC34A]/20 border border-[#8BC34A]/50 rounded-full flex items-center justify-center text-[#8BC34A] group-hover:bg-[#8BC34A] group-hover:text-white transition-colors shadow-[0_0_20px_rgba(139,195,74,0.3)]"
             >
               <FaArrowDown className="text-sm" />
