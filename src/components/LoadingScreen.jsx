@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { FaGlobe } from 'react-icons/fa';
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { FaGlobe } from "react-icons/fa";
 
 const LoadingScreen = ({ onFinish }) => {
   const [progress, setProgress] = useState(0);
@@ -33,7 +33,7 @@ const LoadingScreen = ({ onFinish }) => {
         {/* Animated Brand Logo */}
         <motion.div
           animate={{ scale: [1, 1.1, 1], rotate: [0, 180, 360] }}
-          transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           className="w-24 h-24 rounded-full bg-gradient-to-br from-[#8BC34A] to-[#3E7C17] flex items-center justify-center text-white shadow-2xl mb-8 border-2 border-white/20"
         >
           <FaGlobe className="text-5xl" />

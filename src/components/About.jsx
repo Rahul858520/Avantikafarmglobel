@@ -1,6 +1,12 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { FaCheckCircle, FaHistory, FaLeaf, FaTemperatureHigh, FaHandshake } from 'react-icons/fa';
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import {
+  FaCheckCircle,
+  FaHistory,
+  FaLeaf,
+  FaTemperatureHigh,
+  FaHandshake,
+} from "react-icons/fa";
 
 const About = () => {
   const [counters, setCounters] = useState({
@@ -15,7 +21,8 @@ const About = () => {
       setCounters((prev) => ({
         experience: prev.experience < 40 ? prev.experience + 1 : 40,
         farmers: prev.farmers < 1500 ? prev.farmers + 50 : 1500,
-        exportVolume: prev.exportVolume < 25000 ? prev.exportVolume + 1000 : 25000,
+        exportVolume:
+          prev.exportVolume < 25000 ? prev.exportVolume + 1000 : 25000,
         countries: prev.countries < 25 ? prev.countries + 1 : 25,
       }));
     }, 40);
@@ -24,11 +31,31 @@ const About = () => {
   }, []);
 
   const highlights = [
-    { icon: FaLeaf, title: 'Farmer-Network Sourcing', desc: 'Direct sourcing from over 1,500 dedicated farmers.' },
-    { icon: FaCheckCircle, title: 'Scientific Grading', desc: 'Automated optical sorting & precision manual inspection.' },
-    { icon: FaTemperatureHigh, title: 'Controlled Temp Storage', desc: 'Advanced cold storage maintaining perfect shelf-life.' },
-    { icon: FaHandshake, title: 'Transparent Trade Practices', desc: 'Clear documentation, fair pricing & ethical business.' },
-    { icon: FaHistory, title: 'Reliable Export Volumes', desc: 'Steady round-the-year supply capabilities.' },
+    {
+      icon: FaLeaf,
+      title: "Farmer-Network Sourcing",
+      desc: "Direct sourcing from over 1,500 dedicated farmers.",
+    },
+    {
+      icon: FaCheckCircle,
+      title: "Scientific Grading",
+      desc: "Automated optical sorting & precision manual inspection.",
+    },
+    {
+      icon: FaTemperatureHigh,
+      title: "Controlled Temp Storage",
+      desc: "Advanced cold storage maintaining perfect shelf-life.",
+    },
+    {
+      icon: FaHandshake,
+      title: "Transparent Trade Practices",
+      desc: "Clear documentation, fair pricing & ethical business.",
+    },
+    {
+      icon: FaHistory,
+      title: "Reliable Export Volumes",
+      desc: "Steady round-the-year supply capabilities.",
+    },
   ];
 
   return (
@@ -49,7 +76,9 @@ const About = () => {
             About <span className="text-[#3E7C17]">Avantika Farm Globe</span>
           </h2>
           <p className="mt-4 text-lg text-gray-700 font-normal leading-relaxed">
-            Avantika Farm Globe represents the new generation of Indian agri-exports, where 40+ years of legacy expertise meets global standards of quality, consistency, and transparency.
+            Avantika Farm Globe represents the new generation of Indian
+            agri-exports, where 40+ years of legacy expertise meets global
+            standards of quality, consistency, and transparency.
           </p>
         </motion.div>
 
@@ -71,8 +100,13 @@ const About = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#4E342E]/80 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 text-white">
-                <h4 className="text-2xl font-bold">Shree Mangalmurti Traders</h4>
-                <p className="text-sm text-[#F8F5EC]/90 mt-1">Our parent company, established in 1985 in Nashik, Maharashtra.</p>
+                <h4 className="text-2xl font-bold">
+                  Shree Mangalmurti Traders
+                </h4>
+                <p className="text-sm text-[#F8F5EC]/90 mt-1">
+                  Our parent company, established in 1985 in Nashik,
+                  Maharashtra.
+                </p>
               </div>
             </div>
 
@@ -80,15 +114,20 @@ const About = () => {
             <div className="grid grid-cols-2 gap-4 mt-6">
               <div className="glassmorphism p-6 rounded-2xl shadow-xl border border-white/50 text-center">
                 <h3 className="text-4xl sm:text-5xl font-extrabold text-[#3E7C17]">
-                  {counters.experience}+ <span className="text-lg text-[#4E342E]">Yrs</span>
+                  {counters.experience}+{" "}
+                  <span className="text-lg text-[#4E342E]">Yrs</span>
                 </h3>
-                <p className="text-xs sm:text-sm font-semibold text-gray-600 mt-2 uppercase tracking-wider">Combined Legacy</p>
+                <p className="text-xs sm:text-sm font-semibold text-gray-600 mt-2 uppercase tracking-wider">
+                  Combined Legacy
+                </p>
               </div>
               <div className="glassmorphism p-6 rounded-2xl shadow-xl border border-white/50 text-center">
                 <h3 className="text-4xl sm:text-5xl font-extrabold text-[#3E7C17]">
                   {counters.farmers}+
                 </h3>
-                <p className="text-xs sm:text-sm font-semibold text-gray-600 mt-2 uppercase tracking-wider">Trusted Farmers</p>
+                <p className="text-xs sm:text-sm font-semibold text-gray-600 mt-2 uppercase tracking-wider">
+                  Trusted Farmers
+                </p>
               </div>
             </div>
           </motion.div>
@@ -106,7 +145,11 @@ const About = () => {
                 Rooted in Experience. Growing Globally.
               </h3>
               <p className="mt-4 text-gray-600 leading-relaxed text-base sm:text-lg">
-                Established in 2026, Avantika Farm Globe exports premium-grade potatoes and onions meeting international quality norms. Backed by Shree Mangalmurti Traders (Est. 1985) with over four decades of deep-rooted agricultural supply chain experience across major Indian wholesale markets.
+                Established in 2026, Avantika Farm Globe exports premium-grade
+                potatoes and onions meeting international quality norms. Backed
+                by Shree Mangalmurti Traders (Est. 1985) with over four decades
+                of deep-rooted agricultural supply chain experience across major
+                Indian wholesale markets.
               </p>
             </div>
 
@@ -118,8 +161,12 @@ const About = () => {
                     <item.icon className="text-xl" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-[#4E342E] text-base group-hover:text-[#3E7C17] transition-colors">{item.title}</h4>
-                    <p className="text-gray-600 text-xs mt-1 leading-relaxed">{item.desc}</p>
+                    <h4 className="font-bold text-[#4E342E] text-base group-hover:text-[#3E7C17] transition-colors">
+                      {item.title}
+                    </h4>
+                    <p className="text-gray-600 text-xs mt-1 leading-relaxed">
+                      {item.desc}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -134,13 +181,23 @@ const About = () => {
               <div className="relative border-l-2 border-[#8BC34A] ml-4 pl-6 space-y-6">
                 <div className="relative">
                   <span className="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-[#3E7C17] border-4 border-white shadow"></span>
-                  <h5 className="font-bold text-base text-[#4E342E]">1985 - Shree Mangalmurti Traders</h5>
-                  <p className="text-xs text-gray-500 mt-1">Founding of our parent company in Nashik, establishing strong farmer ties and domestic trade mastery.</p>
+                  <h5 className="font-bold text-base text-[#4E342E]">
+                    1985 - Shree Mangalmurti Traders
+                  </h5>
+                  <p className="text-xs text-gray-500 mt-1">
+                    Founding of our parent company in Nashik, establishing
+                    strong farmer ties and domestic trade mastery.
+                  </p>
                 </div>
                 <div className="relative">
                   <span className="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-[#8BC34A] border-4 border-white shadow"></span>
-                  <h5 className="font-bold text-base text-[#4E342E]">2026 - Avantika Farm Globe</h5>
-                  <p className="text-xs text-gray-500 mt-1">Inception of our specialized export division to deliver premium fresh produce directly to global markets.</p>
+                  <h5 className="font-bold text-base text-[#4E342E]">
+                    2026 - Avantika Farm Globe
+                  </h5>
+                  <p className="text-xs text-gray-500 mt-1">
+                    Inception of our specialized export division to deliver
+                    premium fresh produce directly to global markets.
+                  </p>
                 </div>
               </div>
             </div>

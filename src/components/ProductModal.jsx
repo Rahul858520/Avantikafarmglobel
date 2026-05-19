@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaTimes, FaPaperPlane, FaShoppingBag } from 'react-icons/fa';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaTimes, FaPaperPlane, FaShoppingBag } from "react-icons/fa";
 
 const ProductModal = ({ isOpen, onClose, product }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    volume: '1 Container (20ft / 40ft Reefer)',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    volume: "1 Container (20ft / 40ft Reefer)",
+    message: "",
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -29,8 +29,8 @@ const ProductModal = ({ isOpen, onClose, product }) => {
 
   if (!isOpen) return null;
 
-  const productName = product ? product.name : 'Premium Export Produce';
-  const productCat = product ? product.category : 'Agri Produce';
+  const productName = product ? product.name : "Premium Export Produce";
+  const productCat = product ? product.category : "Agri Produce";
 
   return (
     <AnimatePresence>
@@ -58,7 +58,9 @@ const ProductModal = ({ isOpen, onClose, product }) => {
                 <FaShoppingBag className="text-[#8BC34A]" />
                 <span>{productName}</span>
               </h3>
-              <p className="text-xs text-[#F8F5EC]/80 mt-1">Specify your bulk order preferences below for {productCat}.</p>
+              <p className="text-xs text-[#F8F5EC]/80 mt-1">
+                Specify your bulk order preferences below for {productCat}.
+              </p>
             </div>
             <button
               onClick={onClose}
@@ -76,9 +78,14 @@ const ProductModal = ({ isOpen, onClose, product }) => {
                 animate={{ opacity: 1, scale: 1 }}
                 className="bg-emerald-50 border-2 border-[#3E7C17] p-8 rounded-2xl text-center shadow-lg my-4"
               >
-                <h4 className="font-extrabold text-[#3E7C17] text-2xl mb-2">Inquiry Received!</h4>
+                <h4 className="font-extrabold text-[#3E7C17] text-2xl mb-2">
+                  Inquiry Received!
+                </h4>
                 <p className="text-sm text-emerald-800 leading-relaxed mb-6">
-                  Our commercial export sales team has received your inquiry for <strong className="text-[#4E342E]">{productName}</strong>. We will send the Proforma Invoice and latest FOB/CIF pricing to your email shortly.
+                  Our commercial export sales team has received your inquiry for{" "}
+                  <strong className="text-[#4E342E]">{productName}</strong>. We
+                  will send the Proforma Invoice and latest FOB/CIF pricing to
+                  your email shortly.
                 </p>
                 <div className="w-12 h-12 rounded-full bg-[#3E7C17] text-white flex items-center justify-center mx-auto text-xl shadow-md animate-bounce">
                   ✓
@@ -88,7 +95,9 @@ const ProductModal = ({ isOpen, onClose, product }) => {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Your Name *</label>
+                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
+                      Your Name *
+                    </label>
                     <input
                       type="text"
                       name="name"
@@ -100,7 +109,9 @@ const ProductModal = ({ isOpen, onClose, product }) => {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Business Email *</label>
+                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
+                      Business Email *
+                    </label>
                     <input
                       type="email"
                       name="email"
@@ -115,7 +126,9 @@ const ProductModal = ({ isOpen, onClose, product }) => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Phone / WhatsApp *</label>
+                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
+                      Phone / WhatsApp *
+                    </label>
                     <input
                       type="tel"
                       name="phone"
@@ -127,7 +140,9 @@ const ProductModal = ({ isOpen, onClose, product }) => {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Company Name *</label>
+                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
+                      Company Name *
+                    </label>
                     <input
                       type="text"
                       name="company"
@@ -141,22 +156,34 @@ const ProductModal = ({ isOpen, onClose, product }) => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Estimated Initial Volume *</label>
+                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
+                    Estimated Initial Volume *
+                  </label>
                   <select
                     name="volume"
                     value={formData.volume}
                     onChange={handleChange}
                     className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#4E342E] focus:outline-none focus:border-[#3E7C17] transition-colors shadow-xs"
                   >
-                    <option value="1 Container (20ft / 40ft Reefer)">1 Container (20ft / 40ft Reefer Trial)</option>
-                    <option value="2-5 Containers Monthly">2-5 Containers Monthly</option>
-                    <option value="10+ Containers Monthly">10+ Containers Monthly (Bulk Contract)</option>
-                    <option value="Custom / Sample Request">Custom Packaging / Sample Request</option>
+                    <option value="1 Container (20ft / 40ft Reefer)">
+                      1 Container (20ft / 40ft Reefer Trial)
+                    </option>
+                    <option value="2-5 Containers Monthly">
+                      2-5 Containers Monthly
+                    </option>
+                    <option value="10+ Containers Monthly">
+                      10+ Containers Monthly (Bulk Contract)
+                    </option>
+                    <option value="Custom / Sample Request">
+                      Custom Packaging / Sample Request
+                    </option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Destination Port & Packaging Notes *</label>
+                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
+                    Destination Port & Packaging Notes *
+                  </label>
                   <textarea
                     name="message"
                     value={formData.message}

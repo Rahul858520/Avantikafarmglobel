@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaArrowUp } from 'react-icons/fa';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaArrowUp } from "react-icons/fa";
 
 const BackToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -8,7 +8,9 @@ const BackToTop = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const totalScroll =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
       const currentScroll = window.scrollY;
       const progress = (currentScroll / totalScroll) * 100;
       setScrollProgress(progress);
@@ -20,14 +22,14 @@ const BackToTop = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
 
@@ -44,7 +46,7 @@ const BackToTop = () => {
         >
           {/* Progress ring background */}
           <div className="absolute inset-0 rounded-full border-2 border-white/10" />
-          
+
           {/* Progress ring active */}
           <svg className="absolute inset-0 w-full h-full transform -rotate-90">
             <circle

@@ -1,20 +1,38 @@
-
-import { motion } from 'framer-motion';
-import { FaShip, FaGlobeAmericas, FaAnchor, FaCheckCircle, FaRoute } from 'react-icons/fa';
+import { motion } from "framer-motion";
+import {
+  FaShip,
+  FaGlobeAmericas,
+  FaAnchor,
+  FaCheckCircle,
+  FaRoute,
+} from "react-icons/fa";
 
 const GlobalExport = () => {
   const stats = [
-    { value: '40+', label: 'Years Legacy', sub: 'Since 1985' },
-    { value: '1,500+', label: 'Farmers Network', sub: 'Direct Sourcing' },
-    { value: '15+', label: 'Product Categories', sub: 'Premium Varieties' },
-    { value: '100%', label: 'Export Readiness', sub: 'APEDA & Global Standards' },
+    { value: "40+", label: "Years Legacy", sub: "Since 1985" },
+    { value: "1,500+", label: "Farmers Network", sub: "Direct Sourcing" },
+    { value: "15+", label: "Product Categories", sub: "Premium Varieties" },
+    {
+      value: "100%",
+      label: "Export Readiness",
+      sub: "APEDA & Global Standards",
+    },
   ];
 
   const destinations = [
-    { country: 'Middle East & GCC', ports: 'Jebel Ali, Dammam, Shuwaikh, Hamad' },
-    { country: 'Southeast Asia', ports: 'Port Klang, Singapore, Colombo, Manila' },
-    { country: 'Europe & UK', ports: 'Rotterdam, Felixstowe, Hamburg, Antwerp' },
-    { country: 'Far East & Beyond', ports: 'Tokyo, Busan, Hong Kong' },
+    {
+      country: "Middle East & GCC",
+      ports: "Jebel Ali, Dammam, Shuwaikh, Hamad",
+    },
+    {
+      country: "Southeast Asia",
+      ports: "Port Klang, Singapore, Colombo, Manila",
+    },
+    {
+      country: "Europe & UK",
+      ports: "Rotterdam, Felixstowe, Hamburg, Antwerp",
+    },
+    { country: "Far East & Beyond", ports: "Tokyo, Busan, Hong Kong" },
   ];
 
   return (
@@ -35,7 +53,8 @@ const GlobalExport = () => {
             Our Global <span className="text-[#3E7C17]">Export Footprint</span>
           </h2>
           <p className="mt-4 text-lg text-gray-700 font-normal leading-relaxed">
-            Connecting Indian agricultural excellence with major maritime ports and wholesale markets across the globe.
+            Connecting Indian agricultural excellence with major maritime ports
+            and wholesale markets across the globe.
           </p>
         </motion.div>
 
@@ -58,9 +77,13 @@ const GlobalExport = () => {
                 <FaShip className="animate-pulse" />
                 <span>Maritime Transit Mastery</span>
               </div>
-              <h3 className="text-2xl sm:text-4xl font-extrabold leading-tight">Flawless Cold-Chain Container Shipments</h3>
+              <h3 className="text-2xl sm:text-4xl font-extrabold leading-tight">
+                Flawless Cold-Chain Container Shipments
+              </h3>
               <p className="mt-4 text-sm sm:text-base text-[#F8F5EC]/90 font-light leading-relaxed">
-                Partnered with premier global shipping lines to ensure our potatoes and onions maintain perfect temperature and humidity from our Nashik packhouse to your destination port.
+                Partnered with premier global shipping lines to ensure our
+                potatoes and onions maintain perfect temperature and humidity
+                from our Nashik packhouse to your destination port.
               </p>
               <div className="mt-6 flex items-center gap-4 text-xs font-bold text-[#8BC34A] uppercase tracking-wider">
                 <div className="flex items-center gap-1.5 bg-black/40 px-3 py-1.5 rounded-lg border border-white/10">
@@ -88,8 +111,12 @@ const GlobalExport = () => {
               <h3 className="text-4xl sm:text-5xl font-extrabold text-[#3E7C17] group-hover:scale-110 transition-transform duration-500">
                 {stat.value}
               </h3>
-              <h4 className="text-[#4E342E] font-bold text-base sm:text-lg mt-3">{stat.label}</h4>
-              <p className="text-gray-500 text-xs mt-1 font-medium uppercase tracking-wider">{stat.sub}</p>
+              <h4 className="text-[#4E342E] font-bold text-base sm:text-lg mt-3">
+                {stat.label}
+              </h4>
+              <p className="text-gray-500 text-xs mt-1 font-medium uppercase tracking-wider">
+                {stat.sub}
+              </p>
             </motion.div>
           ))}
         </div>
@@ -99,20 +126,32 @@ const GlobalExport = () => {
           <div className="flex items-center gap-3 mb-8 border-b border-gray-100 pb-6">
             <FaGlobeAmericas className="text-3xl text-[#3E7C17]" />
             <div>
-              <h3 className="text-2xl font-extrabold text-[#4E342E]">Major Export Destinations</h3>
-              <p className="text-gray-500 text-sm mt-0.5">We maintain active trading corridors with leading importers in these key maritime sectors.</p>
+              <h3 className="text-2xl font-extrabold text-[#4E342E]">
+                Major Export Destinations
+              </h3>
+              <p className="text-gray-500 text-sm mt-0.5">
+                We maintain active trading corridors with leading importers in
+                these key maritime sectors.
+              </p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {destinations.map((dest, index) => (
-              <div key={index} className="bg-[#F8F5EC] p-6 rounded-2xl border border-gray-200/60 hover:border-[#8BC34A] transition-colors group">
+              <div
+                key={index}
+                className="bg-[#F8F5EC] p-6 rounded-2xl border border-gray-200/60 hover:border-[#8BC34A] transition-colors group"
+              >
                 <div className="flex items-center gap-2 text-[#3E7C17] mb-3">
                   <FaCheckCircle className="text-lg group-hover:scale-110 transition-transform" />
-                  <h4 className="font-bold text-[#4E342E] text-lg">{dest.country}</h4>
+                  <h4 className="font-bold text-[#4E342E] text-lg">
+                    {dest.country}
+                  </h4>
                 </div>
                 <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-                  <span className="font-semibold block text-gray-500 mb-1 uppercase tracking-wider text-[10px]">Key Ports of Discharge:</span>
+                  <span className="font-semibold block text-gray-500 mb-1 uppercase tracking-wider text-[10px]">
+                    Key Ports of Discharge:
+                  </span>
                   {dest.ports}
                 </p>
               </div>

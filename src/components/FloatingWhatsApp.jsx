@@ -1,5 +1,4 @@
-
-import { FaWhatsapp } from 'react-icons/fa';
+import { FaWhatsapp } from "react-icons/fa";
 
 const FloatingWhatsApp = () => {
   return (

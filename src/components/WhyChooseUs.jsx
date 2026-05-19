@@ -1,38 +1,44 @@
-
-import { motion } from 'framer-motion';
-import { FaAward, FaSearchDollar, FaBoxes, FaBalanceScale, FaUserShield, FaHandshake } from 'react-icons/fa';
+import { motion } from "framer-motion";
+import {
+  FaAward,
+  FaSearchDollar,
+  FaBoxes,
+  FaBalanceScale,
+  FaUserShield,
+  FaHandshake,
+} from "react-icons/fa";
 
 const WhyChooseUs = () => {
   const features = [
     {
       icon: FaAward,
-      title: 'Legacy-Backed Expertise',
-      desc: 'Backed by Shree Mangalmurti Traders (Est. 1985), bringing over 40 years of agricultural mastery and market authority to international trade.',
+      title: "Legacy-Backed Expertise",
+      desc: "Backed by Shree Mangalmurti Traders (Est. 1985), bringing over 40 years of agricultural mastery and market authority to international trade.",
     },
     {
       icon: FaSearchDollar,
-      title: 'Export-Grade Quality Control',
-      desc: 'Rigorous multi-stage sorting, optical grading, and strict adherence to international phytosanitary standards for zero-defect shipments.',
+      title: "Export-Grade Quality Control",
+      desc: "Rigorous multi-stage sorting, optical grading, and strict adherence to international phytosanitary standards for zero-defect shipments.",
     },
     {
       icon: FaBoxes,
-      title: 'Reliable Supply & Volumes',
-      desc: 'Massive procurement capacity from 1,500+ farmers and advanced cold storage infrastructure ensuring year-round volume consistency.',
+      title: "Reliable Supply & Volumes",
+      desc: "Massive procurement capacity from 1,500+ farmers and advanced cold storage infrastructure ensuring year-round volume consistency.",
     },
     {
       icon: FaBalanceScale,
-      title: 'Transparent Trade Practices',
-      desc: '100% transparency in grading, pricing, and documentation. No hidden surprises, just straightforward ethical business transactions.',
+      title: "Transparent Trade Practices",
+      desc: "100% transparency in grading, pricing, and documentation. No hidden surprises, just straightforward ethical business transactions.",
     },
     {
       icon: FaUserShield,
-      title: 'Buyer-Centric Approach',
-      desc: 'Tailored packaging sizes, customized trial shipment flexibility, and dedicated multilingual account managers for seamless communication.',
+      title: "Buyer-Centric Approach",
+      desc: "Tailored packaging sizes, customized trial shipment flexibility, and dedicated multilingual account managers for seamless communication.",
     },
     {
       icon: FaHandshake,
-      title: 'End-to-End Logistics',
-      desc: 'Partnered with leading global shipping lines and freight forwarders to guarantee timely port-to-port delivery under perfect transit conditions.',
+      title: "End-to-End Logistics",
+      desc: "Partnered with leading global shipping lines and freight forwarders to guarantee timely port-to-port delivery under perfect transit conditions.",
     },
   ];
 
@@ -68,7 +74,9 @@ const WhyChooseUs = () => {
             Why Global Buyers <span className="text-[#3E7C17]">Choose Us</span>
           </h2>
           <p className="mt-4 text-lg text-gray-700 font-normal leading-relaxed">
-            Delivering excellence across every shipment through our robust supply chain, transparent operations, and uncompromising quality standards.
+            Delivering excellence across every shipment through our robust
+            supply chain, transparent operations, and uncompromising quality
+            standards.
           </p>
         </motion.div>
 

@@ -1,24 +1,24 @@
-import { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
-import { ReactLenis } from 'lenis/react';
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import { ReactLenis } from "lenis/react";
 
 // Components
-import LoadingScreen from './components/LoadingScreen';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import PotatoScrollSection from './components/PotatoScrollSection';
-import About from './components/About';
-import VisionMission from './components/VisionMission';
-import WhyChooseUs from './components/WhyChooseUs';
-import Products from './components/Products';
-import ExportProcess from './components/ExportProcess';
-import TrustSection from './components/TrustSection';
-import GlobalExport from './components/GlobalExport';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import ProductModal from './components/ProductModal';
-import FloatingWhatsApp from './components/FloatingWhatsApp';
-import BackToTop from './components/BackToTop';
+import LoadingScreen from "./components/LoadingScreen";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import PotatoScrollSection from "./components/PotatoScrollSection";
+import About from "./components/About";
+import VisionMission from "./components/VisionMission";
+import WhyChooseUs from "./components/WhyChooseUs";
+import Products from "./components/Products";
+import ExportProcess from "./components/ExportProcess";
+import TrustSection from "./components/TrustSection";
+import GlobalExport from "./components/GlobalExport";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import ProductModal from "./components/ProductModal";
+import FloatingWhatsApp from "./components/FloatingWhatsApp";
+import BackToTop from "./components/BackToTop";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -96,4 +96,3 @@ function App() {
 }
 
 export default App;
-

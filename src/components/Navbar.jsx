@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaBars, FaTimes, FaWhatsapp, FaGlobe } from 'react-icons/fa';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaBars, FaTimes, FaWhatsapp, FaGlobe } from "react-icons/fa";
 
 const Navbar = ({ onOpenInquiry }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -14,16 +14,16 @@ const Navbar = ({ onOpenInquiry }) => {
         setScrolled(false);
       }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About Us', href: '#about' },
-    { name: 'Products', href: '#products' },
-    { name: 'Export Process', href: '#process' },
-    { name: 'Contact', href: '#contact' },
+    { name: "Home", href: "#home" },
+    { name: "About Us", href: "#about" },
+    { name: "Products", href: "#products" },
+    { name: "Export Process", href: "#process" },
+    { name: "Contact", href: "#contact" },
   ];
 
   return (
@@ -33,8 +33,8 @@ const Navbar = ({ onOpenInquiry }) => {
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#4E342E]/95 backdrop-blur-md py-3 shadow-xl border-b border-[#8BC34A]/20'
-          : 'bg-gradient-to-b from-black/80 via-black/40 to-transparent py-5'
+          ? "bg-[#4E342E]/95 backdrop-blur-md py-3 shadow-xl border-b border-[#8BC34A]/20"
+          : "bg-gradient-to-b from-black/80 via-black/40 to-transparent py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -92,7 +92,11 @@ const Navbar = ({ onOpenInquiry }) => {
             className="lg:hidden text-white p-2 focus:outline-none"
             aria-label="Toggle Menu"
           >
-            {mobileMenuOpen ? <FaTimes className="text-2xl" /> : <FaBars className="text-2xl" />}
+            {mobileMenuOpen ? (
+              <FaTimes className="text-2xl" />
+            ) : (
+              <FaBars className="text-2xl" />
+            )}
           </button>
         </div>
       </div>
@@ -102,7 +106,7 @@ const Navbar = ({ onOpenInquiry }) => {
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden bg-[#4E342E] border-b border-[#8BC34A]/20 px-4 pt-4 pb-6 shadow-2xl overflow-hidden"
           >

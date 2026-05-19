@@ -1,43 +1,52 @@
-
-import { motion } from 'framer-motion';
-import { FaTractor, FaFilter, FaBoxOpen, FaUserCheck, FaFileContract, FaShip } from 'react-icons/fa';
+import { motion } from "framer-motion";
+import {
+  FaTractor,
+  FaFilter,
+  FaBoxOpen,
+  FaUserCheck,
+  FaFileContract,
+  FaShip,
+} from "react-icons/fa";
 
 const ExportProcess = () => {
   const steps = [
     {
       icon: FaTractor,
-      title: '1. Sourcing',
-      desc: 'Direct procurement from 1,500+ trusted farmers in Nashik and major agricultural belts.',
+      title: "1. Sourcing",
+      desc: "Direct procurement from 1,500+ trusted farmers in Nashik and major agricultural belts.",
     },
     {
       icon: FaFilter,
-      title: '2. Grading',
-      desc: 'Scientific grading to categorize potatoes and onions by exact size, shape, and maturity.',
+      title: "2. Grading",
+      desc: "Scientific grading to categorize potatoes and onions by exact size, shape, and maturity.",
     },
     {
       icon: FaBoxOpen,
-      title: '3. Sorting & Packing',
-      desc: 'Automated sorting and customized mesh/jute/box packing tailored to buyer specifications.',
+      title: "3. Sorting & Packing",
+      desc: "Automated sorting and customized mesh/jute/box packing tailored to buyer specifications.",
     },
     {
       icon: FaUserCheck,
-      title: '4. Quality Check',
-      desc: 'Stringent phytosanitary inspection and quality certification by certified agronomists.',
+      title: "4. Quality Check",
+      desc: "Stringent phytosanitary inspection and quality certification by certified agronomists.",
     },
     {
       icon: FaFileContract,
-      title: '5. Logistics & Docs',
-      desc: 'Flawless customs clearance, certificate of origin, and pre-shipment documentation.',
+      title: "5. Logistics & Docs",
+      desc: "Flawless customs clearance, certificate of origin, and pre-shipment documentation.",
     },
     {
       icon: FaShip,
-      title: '6. Shipment',
-      desc: 'Temperature-controlled reefer container loading and expedited maritime dispatch.',
+      title: "6. Shipment",
+      desc: "Temperature-controlled reefer container loading and expedited maritime dispatch.",
     },
   ];
 
   return (
-    <section id="process" className="py-24 bg-[#F8F5EC] relative overflow-hidden">
+    <section
+      id="process"
+      className="py-24 bg-[#F8F5EC] relative overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -54,7 +63,8 @@ const ExportProcess = () => {
             Our Export <span className="text-[#3E7C17]">Process Flow</span>
           </h2>
           <p className="mt-4 text-lg text-gray-700 font-normal leading-relaxed">
-            A transparent, multi-stage workflow ensuring farm-fresh produce reaches global destinations in perfect condition.
+            A transparent, multi-stage workflow ensuring farm-fresh produce
+            reaches global destinations in perfect condition.
           </p>
         </motion.div>
 
@@ -73,9 +83,16 @@ const ExportProcess = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#4E342E]/80 via-[#4E342E]/40 to-transparent flex items-center p-8 sm:p-12">
             <div className="max-w-xl text-white">
-              <span className="bg-[#8BC34A] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">State-of-the-Art Packhouse</span>
-              <h3 className="text-2xl sm:text-4xl font-extrabold mt-4 leading-tight">Where Quality Meets Global Compliance</h3>
-              <p className="mt-2 text-sm sm:text-base text-[#F8F5EC]/90 font-light">Equipped with advanced cold storage and optical sorting machines to maintain zero-defect export standards.</p>
+              <span className="bg-[#8BC34A] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">
+                State-of-the-Art Packhouse
+              </span>
+              <h3 className="text-2xl sm:text-4xl font-extrabold mt-4 leading-tight">
+                Where Quality Meets Global Compliance
+              </h3>
+              <p className="mt-2 text-sm sm:text-base text-[#F8F5EC]/90 font-light">
+                Equipped with advanced cold storage and optical sorting machines
+                to maintain zero-defect export standards.
+              </p>
             </div>
           </div>
         </motion.div>
@@ -86,9 +103,9 @@ const ExportProcess = () => {
           <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-200 -translate-y-1/2 hidden lg:block" />
           <motion.div
             initial={{ width: 0 }}
-            whileInView={{ width: '100%' }}
+            whileInView={{ width: "100%" }}
             viewport={{ once: true }}
-            transition={{ duration: 1.5, ease: 'easeInOut' }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
             className="absolute top-1/2 left-0 h-1 bg-gradient-to-r from-[#3E7C17] via-[#8BC34A] to-[#3E7C17] -translate-y-1/2 hidden lg:block z-0"
           />
 

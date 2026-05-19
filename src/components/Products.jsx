@@ -1,16 +1,21 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { productsData } from '../data/productsData';
-import { FaInfoCircle, FaShoppingBag } from 'react-icons/fa';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { productsData } from "../data/productsData";
+import { FaInfoCircle, FaShoppingBag } from "react-icons/fa";
 
 const Products = ({ onOpenInquiry }) => {
-  const [activeCategory, setActiveCategory] = useState('Potatoes');
+  const [activeCategory, setActiveCategory] = useState("Potatoes");
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const filteredProducts = productsData.filter(p => p.category === activeCategory);
+  const filteredProducts = productsData.filter(
+    (p) => p.category === activeCategory,
+  );
 
   return (
-    <section id="products" className="py-24 bg-[#4E342E] relative overflow-hidden bg-soil-texture">
+    <section
+      id="products"
+      className="py-24 bg-[#4E342E] relative overflow-hidden bg-soil-texture"
+    >
       <div className="absolute inset-0 bg-black/50 backdrop-blur-xs" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -26,10 +31,12 @@ const Products = ({ onOpenInquiry }) => {
             Premium Export Catalog
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white mt-6 tracking-tight leading-tight">
-            Our Export <span className="text-[#8BC34A]">Product Categories</span>
+            Our Export{" "}
+            <span className="text-[#8BC34A]">Product Categories</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg text-[#F8F5EC]/80 font-light leading-relaxed">
-            Meticulously graded potatoes and onions matching strict global phytosanitary, commercial storage, and processing requirements.
+            Meticulously graded potatoes and onions matching strict global
+            phytosanitary, commercial storage, and processing requirements.
           </p>
         </motion.div>
 
@@ -41,11 +48,11 @@ const Products = ({ onOpenInquiry }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            onClick={() => setActiveCategory('Potatoes')}
+            onClick={() => setActiveCategory("Potatoes")}
             className={`group relative rounded-[2.5rem] overflow-hidden shadow-2xl cursor-pointer border-2 transition-all duration-500 aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/3] flex flex-col justify-end ${
-              activeCategory === 'Potatoes'
-                ? 'border-[#8BC34A] ring-4 ring-[#8BC34A]/20 shadow-[#8BC34A]/20'
-                : 'border-white/15 hover:border-white/40'
+              activeCategory === "Potatoes"
+                ? "border-[#8BC34A] ring-4 ring-[#8BC34A]/20 shadow-[#8BC34A]/20"
+                : "border-white/15 hover:border-white/40"
             }`}
           >
             {/* Full-image background */}
@@ -65,9 +72,10 @@ const Products = ({ onOpenInquiry }) => {
                 <span className="bg-[#3E7C17] text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg border border-[#8BC34A]/40 backdrop-blur-md">
                   Export Category
                 </span>
-                {activeCategory === 'Potatoes' && (
+                {activeCategory === "Potatoes" && (
                   <span className="bg-[#8BC34A] text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider flex items-center gap-2 shadow-lg animate-pulse">
-                    <span className="w-2 h-2 rounded-full bg-white animate-ping" /> Active Category
+                    <span className="w-2 h-2 rounded-full bg-white animate-ping" />{" "}
+                    Active Category
                   </span>
                 )}
               </div>
@@ -75,11 +83,15 @@ const Products = ({ onOpenInquiry }) => {
                 Premium Potatoes
               </h3>
               <p className="mt-3 text-sm sm:text-base text-[#F8F5EC]/80 font-light max-w-xl leading-relaxed line-clamp-2 sm:line-clamp-none">
-                Freshly harvested from pristine Indian farms, meticulously graded, and packed in specialized mesh bags and reefer containers for crisping, French fries, and table export.
+                Freshly harvested from pristine Indian farms, meticulously
+                graded, and packed in specialized mesh bags and reefer
+                containers for crisping, French fries, and table export.
               </p>
               <div className="mt-6 pt-6 border-t border-white/10 flex items-center justify-between text-xs sm:text-sm text-[#8BC34A] font-bold uppercase tracking-wider">
                 <span>Explore 12 Export Varieties</span>
-                <span className="group-hover:translate-x-2 transition-transform duration-300 flex items-center gap-1">View Grid &darr;</span>
+                <span className="group-hover:translate-x-2 transition-transform duration-300 flex items-center gap-1">
+                  View Grid &darr;
+                </span>
               </div>
             </div>
           </motion.div>
@@ -90,11 +102,11 @@ const Products = ({ onOpenInquiry }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            onClick={() => setActiveCategory('Onions')}
+            onClick={() => setActiveCategory("Onions")}
             className={`group relative rounded-[2.5rem] overflow-hidden shadow-2xl cursor-pointer border-2 transition-all duration-500 aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/3] flex flex-col justify-end ${
-              activeCategory === 'Onions'
-                ? 'border-[#8BC34A] ring-4 ring-[#8BC34A]/20 shadow-[#8BC34A]/20'
-                : 'border-white/15 hover:border-white/40'
+              activeCategory === "Onions"
+                ? "border-[#8BC34A] ring-4 ring-[#8BC34A]/20 shadow-[#8BC34A]/20"
+                : "border-white/15 hover:border-white/40"
             }`}
           >
             {/* Full-image background */}
@@ -114,9 +126,10 @@ const Products = ({ onOpenInquiry }) => {
                 <span className="bg-[#3E7C17] text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg border border-[#8BC34A]/40 backdrop-blur-md">
                   Export Category
                 </span>
-                {activeCategory === 'Onions' && (
+                {activeCategory === "Onions" && (
                   <span className="bg-[#8BC34A] text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider flex items-center gap-2 shadow-lg animate-pulse">
-                    <span className="w-2 h-2 rounded-full bg-white animate-ping" /> Active Category
+                    <span className="w-2 h-2 rounded-full bg-white animate-ping" />{" "}
+                    Active Category
                   </span>
                 )}
               </div>
@@ -124,11 +137,15 @@ const Products = ({ onOpenInquiry }) => {
                 Premium Onions
               </h3>
               <p className="mt-3 text-sm sm:text-base text-[#F8F5EC]/80 font-light max-w-xl leading-relaxed line-clamp-2 sm:line-clamp-none">
-                Pungent, dark red Indian onions sourced from Nashik's renowned Garva storage belts. Cured and graded to perfection for extended ocean transit and global wholesale.
+                Pungent, dark red Indian onions sourced from Nashik's renowned
+                Garva storage belts. Cured and graded to perfection for extended
+                ocean transit and global wholesale.
               </p>
               <div className="mt-6 pt-6 border-t border-white/10 flex items-center justify-between text-xs sm:text-sm text-[#8BC34A] font-bold uppercase tracking-wider">
                 <span>Explore 3 Export Varieties</span>
-                <span className="group-hover:translate-x-2 transition-transform duration-300 flex items-center gap-1">View Grid &darr;</span>
+                <span className="group-hover:translate-x-2 transition-transform duration-300 flex items-center gap-1">
+                  View Grid &darr;
+                </span>
               </div>
             </div>
           </motion.div>
@@ -145,16 +162,26 @@ const Products = ({ onOpenInquiry }) => {
               </span>
             </div>
             <h3 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Export-Quality <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8BC34A] to-[#aed581]">{activeCategory} Varieties</span>
+              Export-Quality{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8BC34A] to-[#aed581]">
+                {activeCategory} Varieties
+              </span>
             </h3>
             <p className="text-xs sm:text-sm text-[#F8F5EC]/70 mt-1 font-light">
-              Click &lsquo;Full Specs&rsquo; for detailed dry matter, reducing sugars, and packing configurations.
+              Click &lsquo;Full Specs&rsquo; for detailed dry matter, reducing
+              sugars, and packing configurations.
             </p>
           </div>
           <div className="relative z-10 bg-black/40 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/10 self-start sm:self-center text-center shadow-inner">
-            <span className="block text-[10px] text-[#F8F5EC]/60 uppercase tracking-wider font-bold mb-0.5">Active Catalog Count</span>
-            <span className="text-2xl font-extrabold text-[#8BC34A]">{filteredProducts.length}</span>
-            <span className="text-xs text-white font-medium ml-1">Varieties</span>
+            <span className="block text-[10px] text-[#F8F5EC]/60 uppercase tracking-wider font-bold mb-0.5">
+              Active Catalog Count
+            </span>
+            <span className="text-2xl font-extrabold text-[#8BC34A]">
+              {filteredProducts.length}
+            </span>
+            <span className="text-xs text-white font-medium ml-1">
+              Varieties
+            </span>
           </div>
         </div>
 
@@ -182,7 +209,7 @@ const Products = ({ onOpenInquiry }) => {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-95 group-hover:opacity-100"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#3E2723] via-black/40 to-transparent opacity-90 group-hover:opacity-80 transition-opacity" />
-                  
+
                   {/* Category Badge */}
                   <span className="absolute top-4 right-4 bg-black/60 backdrop-blur-md text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-lg border border-white/20 uppercase tracking-wider">
                     {product.category}
@@ -204,25 +231,45 @@ const Products = ({ onOpenInquiry }) => {
                   {/* Dedicated Specs Box */}
                   <div className="bg-black/30 rounded-2xl p-5 grid grid-cols-2 gap-x-4 gap-y-3 text-xs sm:text-sm border border-white/5 shadow-inner">
                     <div>
-                      <span className="text-[#F8F5EC]/60 block font-medium text-[11px] uppercase tracking-wider mb-0.5">Shape</span>
-                      <span className="text-white font-bold">{product.shape}</span>
+                      <span className="text-[#F8F5EC]/60 block font-medium text-[11px] uppercase tracking-wider mb-0.5">
+                        Shape
+                      </span>
+                      <span className="text-white font-bold">
+                        {product.shape}
+                      </span>
                     </div>
                     <div>
-                      <span className="text-[#F8F5EC]/60 block font-medium text-[11px] uppercase tracking-wider mb-0.5">Size</span>
-                      <span className="text-white font-bold">{product.size}</span>
+                      <span className="text-[#F8F5EC]/60 block font-medium text-[11px] uppercase tracking-wider mb-0.5">
+                        Size
+                      </span>
+                      <span className="text-white font-bold">
+                        {product.size}
+                      </span>
                     </div>
                     <div>
-                      <span className="text-[#F8F5EC]/60 block font-medium text-[11px] uppercase tracking-wider mb-0.5">Skin Type</span>
-                      <span className="text-white font-bold">{product.skinType}</span>
+                      <span className="text-[#F8F5EC]/60 block font-medium text-[11px] uppercase tracking-wider mb-0.5">
+                        Skin Type
+                      </span>
+                      <span className="text-white font-bold">
+                        {product.skinType}
+                      </span>
                     </div>
                     <div>
-                      <span className="text-[#F8F5EC]/60 block font-medium text-[11px] uppercase tracking-wider mb-0.5">Shelf Life</span>
-                      <span className="text-white font-bold">{product.shelfLife}</span>
+                      <span className="text-[#F8F5EC]/60 block font-medium text-[11px] uppercase tracking-wider mb-0.5">
+                        Shelf Life
+                      </span>
+                      <span className="text-white font-bold">
+                        {product.shelfLife}
+                      </span>
                     </div>
                     {product.dryMatter && (
                       <div className="col-span-2 pt-2 mt-1 border-t border-white/10 flex items-center justify-between">
-                        <span className="text-[#F8F5EC]/60 font-medium text-[11px] uppercase tracking-wider">Dry Matter / Solids</span>
-                        <span className="text-[#8BC34A] font-extrabold bg-[#8BC34A]/10 px-2.5 py-0.5 rounded-full border border-[#8BC34A]/30">{product.dryMatter}</span>
+                        <span className="text-[#F8F5EC]/60 font-medium text-[11px] uppercase tracking-wider">
+                          Dry Matter / Solids
+                        </span>
+                        <span className="text-[#8BC34A] font-extrabold bg-[#8BC34A]/10 px-2.5 py-0.5 rounded-full border border-[#8BC34A]/30">
+                          {product.dryMatter}
+                        </span>
                       </div>
                     )}
                   </div>
@@ -274,46 +321,78 @@ const Products = ({ onOpenInquiry }) => {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="lg:w-1/2 relative aspect-[4/3] lg:aspect-auto">
-                <img src={selectedProduct.image} alt={selectedProduct.name} className="w-full h-full object-cover" />
+                <img
+                  src={selectedProduct.image}
+                  alt={selectedProduct.name}
+                  className="w-full h-full object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent lg:hidden" />
                 <div className="absolute bottom-4 left-4 text-white lg:hidden">
                   <h4 className="text-2xl font-bold">{selectedProduct.name}</h4>
-                  <p className="text-xs text-[#8BC34A]">{selectedProduct.purpose}</p>
+                  <p className="text-xs text-[#8BC34A]">
+                    {selectedProduct.purpose}
+                  </p>
                 </div>
               </div>
 
               <div className="lg:w-1/2 p-8 flex flex-col justify-between gap-6 overflow-y-auto max-h-[80vh]">
                 <div>
                   <div className="hidden lg:block mb-6 border-b border-gray-200 pb-4">
-                    <span className="text-xs font-bold text-[#3E7C17] uppercase tracking-widest bg-[#3E7C17]/10 px-3 py-1 rounded-full">{selectedProduct.category}</span>
-                    <h4 className="text-3xl font-extrabold text-[#4E342E] mt-3">{selectedProduct.name}</h4>
-                    <p className="text-sm text-[#3E7C17] font-semibold mt-1">{selectedProduct.purpose}</p>
+                    <span className="text-xs font-bold text-[#3E7C17] uppercase tracking-widest bg-[#3E7C17]/10 px-3 py-1 rounded-full">
+                      {selectedProduct.category}
+                    </span>
+                    <h4 className="text-3xl font-extrabold text-[#4E342E] mt-3">
+                      {selectedProduct.name}
+                    </h4>
+                    <p className="text-sm text-[#3E7C17] font-semibold mt-1">
+                      {selectedProduct.purpose}
+                    </p>
                   </div>
 
-                  <p className="text-gray-600 text-sm leading-relaxed mb-6">{selectedProduct.description}</p>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                    {selectedProduct.description}
+                  </p>
 
                   <div className="space-y-3 bg-white p-6 rounded-2xl shadow-md border border-gray-100">
-                    <h5 className="font-bold text-base text-[#4E342E] border-b border-gray-100 pb-2 mb-3">Export Specifications</h5>
+                    <h5 className="font-bold text-base text-[#4E342E] border-b border-gray-100 pb-2 mb-3">
+                      Export Specifications
+                    </h5>
                     <div className="flex justify-between text-xs sm:text-sm">
                       <span className="text-gray-500 font-medium">Shape:</span>
-                      <span className="font-bold text-[#4E342E]">{selectedProduct.shape}</span>
+                      <span className="font-bold text-[#4E342E]">
+                        {selectedProduct.shape}
+                      </span>
                     </div>
                     <div className="flex justify-between text-xs sm:text-sm">
                       <span className="text-gray-500 font-medium">Size:</span>
-                      <span className="font-bold text-[#4E342E]">{selectedProduct.size}</span>
+                      <span className="font-bold text-[#4E342E]">
+                        {selectedProduct.size}
+                      </span>
                     </div>
                     <div className="flex justify-between text-xs sm:text-sm">
-                      <span className="text-gray-500 font-medium">Skin Type:</span>
-                      <span className="font-bold text-[#4E342E]">{selectedProduct.skinType}</span>
+                      <span className="text-gray-500 font-medium">
+                        Skin Type:
+                      </span>
+                      <span className="font-bold text-[#4E342E]">
+                        {selectedProduct.skinType}
+                      </span>
                     </div>
                     <div className="flex justify-between text-xs sm:text-sm">
-                      <span className="text-gray-500 font-medium">Shelf Life:</span>
-                      <span className="font-bold text-[#4E342E]">{selectedProduct.shelfLife}</span>
+                      <span className="text-gray-500 font-medium">
+                        Shelf Life:
+                      </span>
+                      <span className="font-bold text-[#4E342E]">
+                        {selectedProduct.shelfLife}
+                      </span>
                     </div>
                     {selectedProduct.dryMatter && (
                       <div className="flex justify-between text-xs sm:text-sm">
-                        <span className="text-gray-500 font-medium">Dry Matter:</span>
-                        <span className="font-bold text-[#3E7C17]">{selectedProduct.dryMatter}</span>
+                        <span className="text-gray-500 font-medium">
+                          Dry Matter:
+                        </span>
+                        <span className="font-bold text-[#3E7C17]">
+                          {selectedProduct.dryMatter}
+                        </span>
                       </div>
                     )}
                   </div>

@@ -1,15 +1,25 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaWhatsapp, FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaPaperPlane } from 'react-icons/fa';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  FaPhoneAlt,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaWhatsapp,
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaInstagram,
+  FaPaperPlane,
+} from "react-icons/fa";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    productOfInterest: 'Potatoes (General)',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    productOfInterest: "Potatoes (General)",
+    message: "",
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -24,18 +34,21 @@ const Contact = () => {
     setTimeout(() => {
       setSubmitted(false);
       setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        productOfInterest: 'Potatoes (General)',
-        message: '',
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        productOfInterest: "Potatoes (General)",
+        message: "",
       });
     }, 5000);
   };
 
   return (
-    <section id="contact" className="py-24 bg-[#F8F5EC] relative overflow-hidden">
+    <section
+      id="contact"
+      className="py-24 bg-[#F8F5EC] relative overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -52,7 +65,8 @@ const Contact = () => {
             Initiate <span className="text-[#3E7C17]">Global Trade</span>
           </h2>
           <p className="mt-4 text-lg text-gray-700 font-normal leading-relaxed">
-            Reach out for bulk import inquiries, custom packaging specifications, or trial shipment quotations.
+            Reach out for bulk import inquiries, custom packaging
+            specifications, or trial shipment quotations.
           </p>
         </motion.div>
 
@@ -68,18 +82,25 @@ const Contact = () => {
           >
             {/* Contact Info Cards */}
             <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 flex flex-col gap-8">
-              <h3 className="text-2xl font-extrabold text-[#4E342E]">Corporate Headquarters</h3>
+              <h3 className="text-2xl font-extrabold text-[#4E342E]">
+                Corporate Headquarters
+              </h3>
 
               <div className="flex items-start gap-5 group">
                 <div className="w-14 h-14 rounded-2xl bg-[#F8F5EC] border border-[#8BC34A]/30 flex items-center justify-center text-[#3E7C17] flex-shrink-0 group-hover:bg-[#3E7C17] group-hover:text-white transition-all shadow-md">
                   <FaMapMarkerAlt className="text-2xl" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#4E342E] text-base">Office Address</h4>
+                  <h4 className="font-bold text-[#4E342E] text-base">
+                    Office Address
+                  </h4>
                   <p className="text-gray-600 text-sm mt-1 leading-relaxed">
-                    B-308, Business Plaza, Panchvati Road, Nashik, Maharashtra, India
+                    B-308, Business Plaza, Panchvati Road, Nashik, Maharashtra,
+                    India
                   </p>
-                  <p className="text-xs text-[#3E7C17] font-bold mt-1 uppercase tracking-wider">Parent Co: Shree Mangalmurti Traders (Est. 1985)</p>
+                  <p className="text-xs text-[#3E7C17] font-bold mt-1 uppercase tracking-wider">
+                    Parent Co: Shree Mangalmurti Traders (Est. 1985)
+                  </p>
                 </div>
               </div>
 
@@ -88,10 +109,22 @@ const Contact = () => {
                   <FaPhoneAlt className="text-2xl" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#4E342E] text-base">Phone & WhatsApp</h4>
+                  <h4 className="font-bold text-[#4E342E] text-base">
+                    Phone & WhatsApp
+                  </h4>
                   <p className="text-gray-600 text-sm mt-1 flex flex-col gap-0.5">
-                    <a href="tel:+91777588949" className="hover:text-[#3E7C17] transition-colors">+91 777588949</a>
-                    <a href="tel:+919272099049" className="hover:text-[#3E7C17] transition-colors">+91 9272099049</a>
+                    <a
+                      href="tel:+91777588949"
+                      className="hover:text-[#3E7C17] transition-colors"
+                    >
+                      +91 777588949
+                    </a>
+                    <a
+                      href="tel:+919272099049"
+                      className="hover:text-[#3E7C17] transition-colors"
+                    >
+                      +91 9272099049
+                    </a>
                   </p>
                 </div>
               </div>
@@ -101,9 +134,14 @@ const Contact = () => {
                   <FaEnvelope className="text-2xl" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#4E342E] text-base">Email Inquiries</h4>
+                  <h4 className="font-bold text-[#4E342E] text-base">
+                    Email Inquiries
+                  </h4>
                   <p className="text-gray-600 text-sm mt-1">
-                    <a href="mailto:contact@avantikafarmglobe.com" className="hover:text-[#3E7C17] transition-colors">
+                    <a
+                      href="mailto:contact@avantikafarmglobe.com"
+                      className="hover:text-[#3E7C17] transition-colors"
+                    >
                       contact@avantikafarmglobe.com
                     </a>
                   </p>
@@ -144,8 +182,13 @@ const Contact = () => {
             className="lg:col-span-7 bg-white p-8 sm:p-12 rounded-3xl shadow-2xl border border-gray-100"
           >
             <div className="mb-8">
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#4E342E]">Export Inquiry Form</h3>
-              <p className="text-gray-500 text-sm mt-1">Fill out the details below and our export sales team will contact you within 12 hours.</p>
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#4E342E]">
+                Export Inquiry Form
+              </h3>
+              <p className="text-gray-500 text-sm mt-1">
+                Fill out the details below and our export sales team will
+                contact you within 12 hours.
+              </p>
             </div>
 
             {submitted && (
@@ -154,15 +197,22 @@ const Contact = () => {
                 animate={{ opacity: 1, y: 0 }}
                 className="bg-emerald-50 border-l-4 border-[#3E7C17] p-6 rounded-2xl mb-8 shadow-md"
               >
-                <h4 className="font-extrabold text-[#3E7C17] text-lg">Inquiry Submitted Successfully!</h4>
-                <p className="text-sm text-emerald-800 mt-1">Thank you for choosing Avantika Farm Globe. A dedicated account manager has been assigned to your request.</p>
+                <h4 className="font-extrabold text-[#3E7C17] text-lg">
+                  Inquiry Submitted Successfully!
+                </h4>
+                <p className="text-sm text-emerald-800 mt-1">
+                  Thank you for choosing Avantika Farm Globe. A dedicated
+                  account manager has been assigned to your request.
+                </p>
               </motion.div>
             )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Full Name *</label>
+                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
+                    Full Name *
+                  </label>
                   <input
                     type="text"
                     name="name"
@@ -174,7 +224,9 @@ const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Email Address *</label>
+                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
+                    Email Address *
+                  </label>
                   <input
                     type="email"
                     name="email"
@@ -189,7 +241,9 @@ const Contact = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Phone / WhatsApp *</label>
+                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
+                    Phone / WhatsApp *
+                  </label>
                   <input
                     type="tel"
                     name="phone"
@@ -201,7 +255,9 @@ const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Company Name *</label>
+                  <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
+                    Company Name *
+                  </label>
                   <input
                     type="text"
                     name="company"
@@ -215,25 +271,37 @@ const Contact = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Product of Interest *</label>
+                <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
+                  Product of Interest *
+                </label>
                 <select
                   name="productOfInterest"
                   value={formData.productOfInterest}
                   onChange={handleChange}
                   className="w-full bg-[#F8F5EC] border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-[#4E342E] focus:outline-none focus:border-[#3E7C17] transition-colors"
                 >
-                  <option value="Potatoes (General)">Potatoes (General / Bulk)</option>
-                  <option value="Lady Rosetta Potatoes">Lady Rosetta Potatoes</option>
+                  <option value="Potatoes (General)">
+                    Potatoes (General / Bulk)
+                  </option>
+                  <option value="Lady Rosetta Potatoes">
+                    Lady Rosetta Potatoes
+                  </option>
                   <option value="Chipsona Potatoes">Chipsona Potatoes</option>
                   <option value="Onions (Red Onion)">Onions (Red Onion)</option>
-                  <option value="Onions (Garva Onion)">Onions (Garva Onion)</option>
+                  <option value="Onions (Garva Onion)">
+                    Onions (Garva Onion)
+                  </option>
                   <option value="Shallot Onions">Shallot Onions</option>
-                  <option value="Both Potatoes & Onions">Both Potatoes & Onions</option>
+                  <option value="Both Potatoes & Onions">
+                    Both Potatoes & Onions
+                  </option>
                 </select>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Specific Requirements / Estimated Volume *</label>
+                <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
+                  Specific Requirements / Estimated Volume *
+                </label>
                 <textarea
                   name="message"
                   value={formData.message}
@@ -256,17 +324,21 @@ const Contact = () => {
 
             {/* Social Media Links */}
             <div className="mt-12 pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">Connect on Professional Networks</span>
+              <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">
+                Connect on Professional Networks
+              </span>
               <div className="flex items-center gap-4">
-                {[FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram].map((Icon, index) => (
-                  <a
-                    key={index}
-                    href="#social"
-                    className="w-10 h-10 rounded-full bg-[#F8F5EC] hover:bg-[#3E7C17] hover:text-white text-[#4E342E] flex items-center justify-center transition-all shadow-md hover:scale-110"
-                  >
-                    <Icon className="text-base" />
-                  </a>
-                ))}
+                {[FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram].map(
+                  (Icon, index) => (
+                    <a
+                      key={index}
+                      href="#social"
+                      className="w-10 h-10 rounded-full bg-[#F8F5EC] hover:bg-[#3E7C17] hover:text-white text-[#4E342E] flex items-center justify-center transition-all shadow-md hover:scale-110"
+                    >
+                      <Icon className="text-base" />
+                    </a>
+                  ),
+                )}
               </div>
             </div>
           </motion.div>
