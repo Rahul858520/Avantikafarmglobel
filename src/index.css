@@ -11,7 +11,7 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     font-family: 'Outfit', 'Inter', sans-serif;
     color: #1A1A1A;
     background-color: #F8F5EC;

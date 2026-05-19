@@ -142,7 +142,7 @@ export default function PotatoScrollSection() {
             <img 
               src={currentSrc} 
               alt="Avantika Premium Potato Sequence" 
-              className="absolute inset-0 w-full h-full object-contain filter drop-shadow-2xl transition-all duration-75 pointer-events-none select-none" 
+              className="absolute inset-0 w-full h-full object-contain filter drop-shadow-2xl pointer-events-none select-none" 
             />
 
             {/* Steam overlay — only on 'steam' phase */}

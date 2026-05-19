@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { ReactLenis } from 'lenis/react';
 
 // Components
 import LoadingScreen from './components/LoadingScreen';
@@ -35,61 +36,64 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8F5EC] text-[#1A1A1A] font-sans selection:bg-[#8BC34A] selection:text-white">
-      <AnimatePresence mode="wait">
-        {loading ? (
-          <LoadingScreen key="loading" onFinish={() => setLoading(false)} />
-        ) : (
-          <div key="main-app" className="relative">
-            {/* Navbar */}
-            <Navbar onOpenInquiry={() => handleOpenInquiry(null)} />
+    <ReactLenis root options={{ lerp: 0.08, duration: 1.2, smoothWheel: true }}>
+      <div className="min-h-screen bg-[#F8F5EC] text-[#1A1A1A] font-sans selection:bg-[#8BC34A] selection:text-white">
+        <AnimatePresence mode="wait">
+          {loading ? (
+            <LoadingScreen key="loading" onFinish={() => setLoading(false)} />
+          ) : (
+            <div key="main-app" className="relative">
+              {/* Navbar */}
+              <Navbar onOpenInquiry={() => handleOpenInquiry(null)} />
 
-            {/* Hero Section */}
-            <Hero onOpenInquiry={() => handleOpenInquiry(null)} />
+              {/* Hero Section */}
+              <Hero onOpenInquiry={() => handleOpenInquiry(null)} />
 
-            {/* Potato Scroll Section */}
-            <PotatoScrollSection />
+              {/* Potato Scroll Section */}
+              <PotatoScrollSection />
 
-            {/* About Us Section */}
-            <About />
+              {/* About Us Section */}
+              <About />
 
-            {/* Vision & Mission Section */}
-            <VisionMission />
+              {/* Vision & Mission Section */}
+              <VisionMission />
 
-            {/* Why Buyers Choose Us Section */}
-            <WhyChooseUs />
+              {/* Why Buyers Choose Us Section */}
+              <WhyChooseUs />
 
-            {/* Products Portfolio Section */}
-            <Products onOpenInquiry={handleOpenInquiry} />
+              {/* Products Portfolio Section */}
+              <Products onOpenInquiry={handleOpenInquiry} />
 
-            {/* Export Process Flow Section */}
-            <ExportProcess />
+              {/* Export Process Flow Section */}
+              <ExportProcess />
 
-            {/* Trust Section */}
-            <TrustSection />
+              {/* Trust Section */}
+              <TrustSection />
 
-            {/* Global Export Section */}
-            <GlobalExport />
+              {/* Global Export Section */}
+              <GlobalExport />
 
-            {/* Contact Section */}
-            <Contact />
+              {/* Contact Section */}
+              <Contact />
 
-            {/* Footer */}
-            <Footer />
+              {/* Footer */}
+              <Footer />
 
-            {/* Floating Elements & Modals */}
-            <FloatingWhatsApp />
-            <BackToTop />
-            <ProductModal
-              isOpen={inquiryModalOpen}
-              onClose={handleCloseInquiry}
-              product={selectedProduct}
-            />
-          </div>
-        )}
-      </AnimatePresence>
-    </div>
+              {/* Floating Elements & Modals */}
+              <FloatingWhatsApp />
+              <BackToTop />
+              <ProductModal
+                isOpen={inquiryModalOpen}
+                onClose={handleCloseInquiry}
+                product={selectedProduct}
+              />
+            </div>
+          )}
+        </AnimatePresence>
+      </div>
+    </ReactLenis>
   );
 }
 
 export default App;
+
