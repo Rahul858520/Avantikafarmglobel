@@ -7,6 +7,7 @@ import {
   FaFileContract,
   FaShip,
 } from "react-icons/fa";
+import qualityImage from "../assets/index/quality_image.jpeg";
 
 const ExportProcess = () => {
   const steps = [
@@ -77,7 +78,7 @@ const ExportProcess = () => {
           className="relative rounded-3xl overflow-hidden shadow-2xl mb-20 border-4 border-white aspect-[21/9] max-h-[400px] bg-black/40"
         >
           <img
-            src="https://images.unsplash.com/photo-1615451664124-749e491cbb67?q=80&w=1600&auto=format&fit=crop"
+            src={qualityImage}
             alt="Export Warehouse Facility"
             className="w-full h-full object-cover"
           />

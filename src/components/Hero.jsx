@@ -5,30 +5,25 @@ import { FaArrowRight, FaPhoneAlt, FaArrowDown } from "react-icons/fa";
 import "swiper/css";
 import "swiper/css/effect-fade";
 
+import hero1 from "../assets/herosection/hero1.jpeg";
+import hero2 from "../assets/herosection/hero2.jpeg";
+import hero3 from "../assets/herosection/hero3.jpeg";
+
 const slides = [
   {
-    image:
-      "https://images.unsplash.com/photo-1595855759920-86582396756a?q=80&w=2000&auto=format&fit=crop",
+    image: hero1,
     title: "Premium Fresh Potato Harvesting",
     subtitle: "Global Processing & Table Exports",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?q=80&w=2000&auto=format&fit=crop",
+    image: hero2,
     title: "Export-Grade Red Onion Grading",
     subtitle: "Sourced from Nashik Garva Belts",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1518977676601-b53f82aba655?q=80&w=2000&auto=format&fit=crop",
+    image: hero3,
     title: "Pristine Lady Rosetta Potatoes",
     subtitle: "High Dry Matter for Global Snack Brands",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1551516230-889ebb6f0ba8?q=80&w=2000&auto=format&fit=crop",
-    title: "Global Reefer Container Logistics",
-    subtitle: "Advanced Cold Chain Oceanic Transit",
   },
 ];
 
@@ -55,8 +50,8 @@ const Hero = ({ onOpenInquiry }) => {
                   style={{ backgroundImage: `url(${slide.image})` }}
                 >
                   {/* Premium Multi-layer Dark Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/60 to-black/80" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-black/60" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
 
                   {/* Active Slide Indicator Overlay */}
                   <div className="absolute bottom-10 right-10 z-20 hidden md:flex flex-col items-end text-right bg-black/40 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/10 shadow-2xl">

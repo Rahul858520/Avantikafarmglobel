@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaBars, FaTimes, FaWhatsapp, FaGlobe } from "react-icons/fa";
+import { FaBars, FaTimes, FaGlobe } from "react-icons/fa";
 
 const Navbar = ({ onOpenInquiry }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -75,16 +75,6 @@ const Navbar = ({ onOpenInquiry }) => {
           >
             <span>Inquire Now</span>
           </button>
-
-          <a
-            href="https://wa.me/91777588949"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg transition-transform hover:scale-110"
-            title="WhatsApp Us"
-          >
-            <FaWhatsapp className="text-2xl" />
-          </a>
 
           {/* Mobile Menu Button */}
           <button

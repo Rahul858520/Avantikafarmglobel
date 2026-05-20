@@ -8,6 +8,9 @@ import {
   FaGlobe,
   FaQuoteLeft,
   FaStar,
+  FaLeaf,
+  FaCertificate,
+  FaCheckCircle,
 } from "react-icons/fa";
 
 const TrustSection = () => {
@@ -40,11 +43,23 @@ const TrustSection = () => {
   ];
 
   const certs = [
-    { name: "APEDA Certified", code: "Export Promotion Council" },
-    { name: "GLOBALG.A.P.", code: "Good Agricultural Practices" },
-    { name: "ISO 9001:2015", code: "Quality Management System" },
-    { name: "FSSAI Approved", code: "Food Safety Standard" },
-    { name: "Phytosanitary Compliant", code: "Plant Quarantine Standard" },
+    {
+      name: "APEDA Certified",
+      code: "Export Promotion Council",
+      icon: FaAward,
+    },
+    { name: "GLOBALG.A.P.", code: "Good Agricultural Practices", icon: FaLeaf },
+    {
+      name: "ISO 9001:2015",
+      code: "Quality Management System",
+      icon: FaCertificate,
+    },
+    { name: "FSSAI Approved", code: "Food Safety Standard", icon: FaShieldAlt },
+    {
+      name: "Phytosanitary Compliant",
+      code: "Plant Quarantine Standard",
+      icon: FaCheckCircle,
+    },
   ];
 
   const testimonials = [
@@ -121,32 +136,51 @@ const TrustSection = () => {
         </div>
 
         {/* Certifications & Badges */}
-        <div className="bg-gradient-to-r from-[#3E7C17]/40 via-[#8BC34A]/20 to-[#3E7C17]/40 backdrop-blur-xl border border-[#8BC34A]/30 rounded-3xl p-8 mb-20 shadow-2xl">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="text-center md:text-left">
-              <div className="flex items-center gap-3 justify-center md:justify-start">
-                <FaShieldAlt className="text-3xl text-[#8BC34A]" />
-                <h3 className="text-2xl font-extrabold text-white">
-                  Global Compliance & Certifications
-                </h3>
+        <div className="bg-gradient-to-br from-[#4E342E]/90 via-black/80 to-[#4E342E]/70 border border-[#8BC34A]/30 rounded-3xl p-8 lg:p-12 mb-20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden">
+          {/* Subtle background glow decorative elements */}
+          <div className="absolute -top-24 -left-24 w-48 h-48 rounded-full bg-[#8BC34A]/10 blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-24 -right-24 w-48 h-48 rounded-full bg-[#3E7C17]/10 blur-3xl pointer-events-none" />
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+            {/* Title & Description Column */}
+            <div className="lg:col-span-4 text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 bg-[#8BC34A]/10 border border-[#8BC34A]/30 px-3.5 py-1.5 rounded-full text-xs font-bold text-[#8BC34A] uppercase tracking-wider mb-4 justify-center lg:justify-start">
+                <FaShieldAlt className="animate-pulse" />
+                <span>Verified Standards</span>
               </div>
-              <p className="text-[#F8F5EC]/80 text-sm mt-1">
-                Guaranteed adherence to international food safety and
-                phytosanitary standards.
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
+                Global Compliance & Certifications
+              </h3>
+              <p className="mt-4 text-[#F8F5EC]/80 text-sm sm:text-base font-light leading-relaxed">
+                Guaranteed adherence to international food safety, phytosanitary
+                requirements, and rigorous quality inspection protocols.
               </p>
             </div>
-            <div className="flex flex-wrap gap-4 items-center justify-center md:justify-end">
+
+            {/* Certifications Cards Grid Column */}
+            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
               {certs.map((cert, index) => (
                 <div
                   key={index}
-                  className="bg-black/40 border border-white/20 px-5 py-3 rounded-2xl text-center shadow-md hover:border-[#8BC34A] transition-colors group"
+                  className="bg-black/50 border border-white/10 hover:border-[#8BC34A]/60 px-6 py-5 rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(139,195,74,0.15)] flex gap-4 items-center group relative overflow-hidden"
                 >
-                  <span className="block font-extrabold text-white text-sm group-hover:text-[#8BC34A] transition-colors">
-                    {cert.name}
-                  </span>
-                  <span className="block text-[10px] text-[#F8F5EC]/60 uppercase tracking-widest mt-0.5">
-                    {cert.code}
-                  </span>
+                  {/* Subtle hover glow backline */}
+                  <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#8BC34A]/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+
+                  {/* Icon Container */}
+                  <div className="w-12 h-12 rounded-xl bg-[#8BC34A]/10 border border-[#8BC34A]/30 flex items-center justify-center text-[#8BC34A] shrink-0 group-hover:bg-[#8BC34A] group-hover:text-white transition-all duration-300 shadow">
+                    <cert.icon className="text-xl" />
+                  </div>
+
+                  {/* Text Content */}
+                  <div>
+                    <h4 className="font-extrabold text-white text-sm group-hover:text-[#8BC34A] transition-colors leading-snug">
+                      {cert.name}
+                    </h4>
+                    <p className="text-[10px] sm:text-xs text-[#F8F5EC]/60 uppercase tracking-widest mt-1 font-medium leading-none">
+                      {cert.code}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>

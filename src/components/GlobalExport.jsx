@@ -6,6 +6,7 @@ import {
   FaCheckCircle,
   FaRoute,
 } from "react-icons/fa";
+import coldChainContainer from "../assets/index/Cold-Chain Container.jpeg";
 
 const GlobalExport = () => {
   const stats = [
@@ -67,7 +68,7 @@ const GlobalExport = () => {
           className="relative rounded-3xl overflow-hidden shadow-2xl mb-20 border-4 border-white aspect-[21/9] max-h-[450px] bg-black/60"
         >
           <img
-            src="https://images.unsplash.com/photo-1551516230-889ebb6f0ba8?q=80&w=1600&auto=format&fit=crop"
+            src={coldChainContainer}
             alt="Global Container Ship"
             className="w-full h-full object-cover"
           />
