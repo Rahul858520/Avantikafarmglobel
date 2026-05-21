@@ -159,13 +159,82 @@ export default function PotatoScrollSection() {
               className="absolute inset-0 w-full h-full object-contain filter drop-shadow-2xl pointer-events-none select-none"
             />
 
-            {/* Steam overlay — only on 'steam' phase */}
+            {/* Wispy Hot Steam Animation Effect */}
             {phase === "steam" && (
-              <img
-                src="/images/steam_overlay.png"
-                alt="Steam"
-                className="absolute inset-0 w-full h-full object-contain animate-pulse opacity-80 pointer-events-none select-none transition-opacity duration-1000"
-              />
+              <div className="absolute inset-0 z-20 pointer-events-none select-none flex items-center justify-center">
+                <style dangerouslySetInnerHTML={{__html: `
+                  @keyframes riseAndFade {
+                    0% {
+                      transform: translateY(20px) scaleX(0.85);
+                      opacity: 0;
+                    }
+                    15% {
+                      opacity: 0.5;
+                    }
+                    50% {
+                      transform: translateY(-20px) scaleX(1.1) skewX(2deg);
+                      opacity: 0.35;
+                    }
+                    100% {
+                      transform: translateY(-80px) scaleX(0.7) skewX(-2deg);
+                      opacity: 0;
+                    }
+                  }
+                  .steam-path-1 {
+                    animation: riseAndFade 4.8s ease-in-out infinite;
+                  }
+                  .steam-path-2 {
+                    animation: riseAndFade 3.9s ease-in-out infinite 0.9s;
+                  }
+                  .steam-path-3 {
+                    animation: riseAndFade 5.5s ease-in-out infinite 1.8s;
+                  }
+                  .steam-path-4 {
+                    animation: riseAndFade 4.4s ease-in-out infinite 2.7s;
+                  }
+                `}} />
+                <svg 
+                  viewBox="0 0 100 100" 
+                  className="w-[60%] h-[80%] overflow-visible filter blur-[5px] opacity-80"
+                >
+                  {/* Steam curl 1 */}
+                  <path 
+                    d="M 35 85 Q 22 55 38 25 T 28 0" 
+                    fill="none" 
+                    stroke="rgba(255, 255, 255, 0.55)" 
+                    strokeWidth="3.5" 
+                    strokeLinecap="round" 
+                    className="steam-path-1"
+                  />
+                  {/* Steam curl 2 */}
+                  <path 
+                    d="M 50 90 Q 62 60 48 30 T 58 0" 
+                    fill="none" 
+                    stroke="rgba(255, 255, 255, 0.65)" 
+                    strokeWidth="4.5" 
+                    strokeLinecap="round" 
+                    className="steam-path-2"
+                  />
+                  {/* Steam curl 3 */}
+                  <path 
+                    d="M 65 85 Q 52 50 68 20 T 58 0" 
+                    fill="none" 
+                    stroke="rgba(255, 255, 255, 0.55)" 
+                    strokeWidth="3.5" 
+                    strokeLinecap="round" 
+                    className="steam-path-3"
+                  />
+                  {/* Steam curl 4 */}
+                  <path 
+                    d="M 43 90 Q 32 65 45 35 T 35 5" 
+                    fill="none" 
+                    stroke="rgba(255, 255, 255, 0.5)" 
+                    strokeWidth="3" 
+                    strokeLinecap="round" 
+                    className="steam-path-4"
+                  />
+                </svg>
+              </div>
             )}
           </div>
 
