@@ -1,5 +1,4 @@
 import {
-  FaGlobe,
   FaPhoneAlt,
   FaEnvelope,
   FaMapMarkerAlt,
@@ -8,6 +7,7 @@ import {
   FaLinkedinIn,
   FaInstagram,
 } from "react-icons/fa";
+import logo from "../assets/herosection/logo.png";
 
 const Footer = () => {
   return (
@@ -19,8 +19,8 @@ const Footer = () => {
           {/* Brand Info */}
           <div className="lg:col-span-2 flex flex-col gap-6">
             <a href="#home" className="flex items-center gap-3 group">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#8BC34A] to-[#3E7C17] flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
-                <FaGlobe className="text-2xl animate-spin-slow" />
+              <div className="w-12 h-12 rounded-full bg-white p-1 flex items-center justify-center shadow-md group-hover:scale-105 transition-transform overflow-hidden">
+                <img src={logo} alt="Avantika Farm Globe Logo" className="w-full h-full object-contain" />
               </div>
               <div>
                 <span className="block text-2xl font-extrabold text-white tracking-tight leading-none">

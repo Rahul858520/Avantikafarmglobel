@@ -1,51 +1,54 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaExpand, FaTimes } from 'react-icons/fa';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaExpand, FaTimes } from "react-icons/fa";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const images = [
     {
-      src: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1200&auto=format&fit=crop',
-      title: 'Sprawling Agricultural Farms',
-      category: 'Farms',
-      span: 'md:col-span-2 md:row-span-2',
+      src: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1200&auto=format&fit=crop",
+      title: "Sprawling Agricultural Farms",
+      category: "Farms",
+      span: "md:col-span-2 md:row-span-2",
     },
     {
-      src: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?q=80&w=1200&auto=format&fit=crop',
-      title: 'Premium Lady Rosetta Potatoes',
-      category: 'Potatoes',
-      span: 'md:col-span-1 md:row-span-1',
+      src: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?q=80&w=1200&auto=format&fit=crop",
+      title: "Premium Lady Rosetta Potatoes",
+      category: "Potatoes",
+      span: "md:col-span-1 md:row-span-1",
     },
     {
-      src: 'https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?q=80&w=1200&auto=format&fit=crop',
-      title: 'Export-Grade Red Onions',
-      category: 'Onion Storage',
-      span: 'md:col-span-1 md:row-span-1',
+      src: "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?q=80&w=1200&auto=format&fit=crop",
+      title: "Export-Grade Red Onions",
+      category: "Onion Storage",
+      span: "md:col-span-1 md:row-span-1",
     },
     {
-      src: 'https://images.unsplash.com/photo-1591825729269-ca1015694200?q=80&w=1200&auto=format&fit=crop',
-      title: 'Automated Packing & Mesh Bags',
-      category: 'Packing Process',
-      span: 'md:col-span-1 md:row-span-2',
+      src: "https://images.unsplash.com/photo-1591825729269-ca1015694200?q=80&w=1200&auto=format&fit=crop",
+      title: "Automated Packing & Mesh Bags",
+      category: "Packing Process",
+      span: "md:col-span-1 md:row-span-2",
     },
     {
-      src: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop',
-      title: 'Reefer Export Containers at Port',
-      category: 'Export Containers',
-      span: 'md:col-span-2 md:row-span-1',
+      src: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop",
+      title: "Reefer Export Containers at Port",
+      category: "Export Containers",
+      span: "md:col-span-2 md:row-span-1",
     },
     {
-      src: 'https://images.unsplash.com/photo-1595855759920-86582396756a?q=80&w=1200&auto=format&fit=crop',
-      title: 'Dedicated Farmer Sourcing Network',
-      category: 'Farmers',
-      span: 'md:col-span-1 md:row-span-1',
+      src: "https://images.unsplash.com/photo-1595855759920-86582396756a?q=80&w=1200&auto=format&fit=crop",
+      title: "Dedicated Farmer Sourcing Network",
+      category: "Farmers",
+      span: "md:col-span-1 md:row-span-1",
     },
   ];
 
   return (
-    <section id="gallery" className="py-24 bg-[#4E342E] relative overflow-hidden bg-soil-texture">
+    <section
+      id="gallery"
+      className="py-24 bg-[#4E342E] relative overflow-hidden bg-soil-texture"
+    >
       <div className="absolute inset-0 bg-black/50 backdrop-blur-xs" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,7 +67,8 @@ const Gallery = () => {
             Our Infrastructure <span className="text-[#8BC34A]">& Farms</span>
           </h2>
           <p className="mt-4 text-lg text-[#F8F5EC]/80 font-light">
-            A glimpse into our sprawling fields, automated packhouses, and global logistics operations.
+            A glimpse into our sprawling fields, automated packhouses, and
+            global logistics operations.
           </p>
         </motion.div>
 
@@ -99,8 +103,12 @@ const Gallery = () => {
                 </div>
 
                 <div>
-                  <h4 className="text-white font-extrabold text-xl tracking-tight transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">{item.title}</h4>
-                  <p className="text-[#8BC34A] text-xs font-semibold mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Click to expand visual</p>
+                  <h4 className="text-white font-extrabold text-xl tracking-tight transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                    {item.title}
+                  </h4>
+                  <p className="text-[#8BC34A] text-xs font-semibold mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Click to expand visual
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -133,13 +141,21 @@ const Gallery = () => {
               </button>
 
               <div className="relative max-h-[75vh] overflow-hidden bg-black flex items-center justify-center">
-                <img src={selectedImage.src} alt={selectedImage.title} className="w-full h-full object-contain max-h-[75vh]" />
+                <img
+                  src={selectedImage.src}
+                  alt={selectedImage.title}
+                  className="w-full h-full object-contain max-h-[75vh]"
+                />
               </div>
 
               <div className="p-6 sm:p-8 bg-gradient-to-r from-[#4E342E] to-[#2d1e1a] flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-white/10">
                 <div>
-                  <span className="text-[#8BC34A] text-xs font-bold uppercase tracking-widest">{selectedImage.category}</span>
-                  <h3 className="text-2xl font-extrabold text-white mt-1">{selectedImage.title}</h3>
+                  <span className="text-[#8BC34A] text-xs font-bold uppercase tracking-widest">
+                    {selectedImage.category}
+                  </span>
+                  <h3 className="text-2xl font-extrabold text-white mt-1">
+                    {selectedImage.title}
+                  </h3>
                 </div>
                 <button
                   onClick={() => setSelectedImage(null)}

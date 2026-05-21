@@ -71,28 +71,33 @@ const ExportProcess = () => {
 
         {/* Warehouse Imagery Header */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative rounded-3xl overflow-hidden shadow-2xl mb-20 border-4 border-white aspect-[21/9] max-h-[400px] bg-black/40"
+          className="relative rounded-3xl overflow-hidden shadow-2xl mb-20 border-4 border-white min-h-[480px] lg:min-h-[420px] flex items-center bg-black/90"
         >
+          {/* Background Image */}
           <img
             src={qualityImage}
             alt="Export Warehouse Facility"
-            className="w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover z-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#4E342E]/80 via-[#4E342E]/40 to-transparent flex items-center p-8 sm:p-12">
-            <div className="max-w-xl text-white">
-              <span className="bg-[#8BC34A] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">
-                State-of-the-Art Packhouse
-              </span>
-              <h3 className="text-2xl sm:text-4xl font-extrabold mt-4 leading-tight">
-                Where Quality Meets Global Compliance
+          {/* Responsive Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/75 to-black/30 lg:bg-gradient-to-r lg:from-[#4E342E]/95 lg:via-[#4E342E]/70 lg:to-transparent z-10" />
+          
+          <div className="relative z-20 w-full p-6 sm:p-10 lg:p-14 flex items-center">
+            {/* Text Content Card */}
+            <div className="max-w-xl bg-black/40 lg:bg-[#4E342E]/50 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-white/15 shadow-2xl">
+              <div className="inline-flex items-center gap-2 bg-[#8BC34A]/20 text-[#aed581] border border-[#8BC34A]/35 text-[10px] sm:text-xs font-extrabold px-3 py-1.5 rounded-full uppercase tracking-wider mb-5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#8BC34A] animate-ping" />
+                <span>State-of-the-Art Packhouse</span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight text-white">
+                Where <span className="text-[#8BC34A]">Quality</span> Meets Global Compliance
               </h3>
-              <p className="mt-2 text-sm sm:text-base text-[#F8F5EC]/90 font-light">
-                Equipped with advanced cold storage and optical sorting machines
-                to maintain zero-defect export standards.
+              <p className="mt-4 text-xs sm:text-sm md:text-base text-[#F8F5EC]/90 font-light leading-relaxed">
+                Equipped with advanced cold storage and optical sorting machines to maintain zero-defect export standards.
               </p>
             </div>
           </div>

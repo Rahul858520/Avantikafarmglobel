@@ -10,6 +10,7 @@ import PotatoScrollSection from "./components/PotatoScrollSection";
 import About from "./components/About";
 import VisionMission from "./components/VisionMission";
 import WhyChooseUs from "./components/WhyChooseUs";
+import MascotShowcase from "./components/MascotShowcase";
 import Products from "./components/Products";
 import ExportProcess from "./components/ExportProcess";
 import TrustSection from "./components/TrustSection";
@@ -60,6 +61,9 @@ function App() {
 
               {/* Why Buyers Choose Us Section */}
               <WhyChooseUs />
+
+              {/* Mascot Showcase Section */}
+              <MascotShowcase />
 
               {/* Products Portfolio Section */}
               <Products onOpenInquiry={handleOpenInquiry} />
