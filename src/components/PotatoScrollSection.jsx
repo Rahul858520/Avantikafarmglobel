@@ -314,10 +314,10 @@ export default function PotatoScrollSection() {
         ctx.scale(zoom, zoom);
         
         const aspect = activeImg.width / activeImg.height;
-        let drawWidth = rect.width * 0.72;
+        let drawWidth = rect.width * 0.85;
         let drawHeight = drawWidth / aspect;
-        if (drawHeight > rect.height * 0.72) {
-          drawHeight = rect.height * 0.72;
+        if (drawHeight > rect.height * 0.85) {
+          drawHeight = rect.height * 0.85;
           drawWidth = drawHeight * aspect;
         }
 
