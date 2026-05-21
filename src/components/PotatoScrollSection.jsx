@@ -3,38 +3,166 @@ import { useEffect, useRef, useState } from "react";
 const PEEL_FRAMES = 20;
 const CUT_FRAMES = 20;
 
-// Preload helper
-const preloadImages = (paths) => {
-  paths.forEach((src) => {
-    const img = new Image();
-    img.src = src;
-  });
+// Dynamic, phase-based shadow morphing on canvas
+const drawDynamicShadow = (ctx, cx, cy, phase, progress) => {
+  ctx.save();
+  
+  let shadowWidth = 240;
+  let shadowHeight = 20;
+  let shadowOpacity = 0.20;
+  
+  if (phase === "hero") {
+    shadowWidth = 240;
+  } else if (phase === "peel") {
+    const t = (progress - 0.15) / 0.4;
+    shadowWidth = 240 - t * 25;
+  } else if (phase === "cut") {
+    const t = (progress - 0.55) / 0.35;
+    shadowWidth = 215 - t * 45;
+    shadowHeight = 18 - t * 3;
+    shadowOpacity = 0.18 - t * 0.04;
+  } else if (phase === "steam") {
+    // Multi-shadow for scattered fries heap
+    ctx.fillStyle = "rgba(0, 0, 0, 0.13)";
+    ctx.filter = "blur(6px)";
+    
+    // Left fry shadow
+    ctx.beginPath();
+    ctx.ellipse(cx - 30, cy, 60, 10, 0, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Right fry shadow
+    ctx.beginPath();
+    ctx.ellipse(cx + 40, cy + 2, 70, 12, 0, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Center fry shadow
+    ctx.beginPath();
+    ctx.ellipse(cx, cy - 1, 80, 14, 0, 0, Math.PI * 2);
+    ctx.fill();
+    
+    ctx.restore();
+    return;
+  }
+
+  ctx.fillStyle = `rgba(0, 0, 0, ${shadowOpacity})`;
+  ctx.filter = "blur(8px)";
+  ctx.beginPath();
+  ctx.ellipse(cx, cy, shadowWidth / 2, shadowHeight / 2, 0, 0, Math.PI * 2);
+  ctx.fill();
+  
+  ctx.restore();
 };
 
 export default function PotatoScrollSection() {
   const sectionRef = useRef(null);
-  const [currentSrc, setCurrentSrc] = useState("/images/potato_hero.png");
+  const canvasRef = useRef(null);
+  const loadedImagesRef = useRef({});
+  const animationFrameRef = useRef(null);
+  const particlesRef = useRef([]);
+
   const [phase, setPhase] = useState("hero"); // 'hero' | 'peel' | 'cut' | 'steam'
   const [textVisible, setTextVisible] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
   const peelPaths = Array.from(
     { length: PEEL_FRAMES },
-    (_, i) => `/images/peel_${String(i + 1).padStart(2, "0")}.png`,
+    (_, i) => `/images/peel_${String(i + 1).padStart(2, "0")}.png`
   );
   const cutPaths = Array.from(
     { length: CUT_FRAMES },
-    (_, i) => `/images/cut_${String(i + 1).padStart(2, "0")}.png`,
+    (_, i) => `/images/cut_${String(i + 1).padStart(2, "0")}.png`
   );
+  
+  const allPaths = ["/images/potato_hero.png", ...peelPaths, ...cutPaths];
 
+  const scrollStateRef = useRef({
+    progress: 0,
+    phase: "hero",
+    currentSrc: "/images/potato_hero.png",
+    frameIdx: 0,
+    lastFrameIdx: 0,
+    shakeProgress: 0,
+  });
+
+  const spawnParticles = (type, count) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const cx = canvas.width / 2 / (window.devicePixelRatio || 1);
+    const cy = canvas.height / 2 / (window.devicePixelRatio || 1);
+
+    for (let i = 0; i < count; i++) {
+      if (type === "peel") {
+        // Falling organic brown peel shards
+        particlesRef.current.push({
+          x: cx + (Math.random() - 0.5) * 160,
+          y: cy + (Math.random() - 0.5) * 100,
+          vx: (Math.random() - 0.5) * 4,
+          vy: Math.random() * -3 - 2, // Bounce upwards slightly
+          size: Math.random() * 8 + 6,
+          color: Math.random() > 0.55 ? "#8D6E63" : "#5D4037",
+          opacity: 1,
+          rotation: Math.random() * Math.PI * 2,
+          rotSpeed: (Math.random() - 0.5) * 0.12,
+          gravity: 0.15,
+          friction: 0.98,
+          type: "peel",
+          life: 1.0,
+          decay: Math.random() * 0.015 + 0.01,
+        });
+      } else if (type === "starch") {
+        // Golden sparks flying out on cuts
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 6 + 4;
+        particlesRef.current.push({
+          x: cx + (Math.random() - 0.5) * 50,
+          y: cy + (Math.random() - 0.5) * 50,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed - 1.5,
+          size: Math.random() * 3 + 2.5,
+          color: ["#FBC02D", "#FFEB3B", "#FFF59D", "#FFFDE7"][Math.floor(Math.random() * 4)],
+          opacity: 1,
+          rotation: Math.random() * Math.PI * 2,
+          rotSpeed: (Math.random() - 0.5) * 0.25,
+          gravity: 0.1,
+          friction: 0.93,
+          type: "starch",
+          life: 1.0,
+          decay: Math.random() * 0.02 + 0.015,
+        });
+      }
+    }
+  };
+
+  // Preload all assets in memory
   useEffect(() => {
-    // Preload all frames immediately
-    preloadImages(peelPaths);
-    preloadImages(cutPaths);
+    let loadedCount = 0;
+    allPaths.forEach((path) => {
+      const img = new Image();
+      img.src = path;
+      img.onload = () => {
+        loadedCount++;
+        loadedImagesRef.current[path] = img;
+        if (loadedCount === allPaths.length) {
+          setImagesLoaded(true);
+        }
+      };
+      img.onerror = () => {
+        loadedCount++;
+        if (loadedCount === allPaths.length) {
+          setImagesLoaded(true);
+        }
+      };
+    });
+  }, []);
+
+  // GSAP ScrollTrigger Sequence
+  useEffect(() => {
+    if (!imagesLoaded) return;
 
     let ctx;
     let timers = [];
 
-    // Dynamic GSAP import (avoids SSR issues, works cleanly with Vite)
     import("gsap").then(({ default: gsap }) => {
       import("gsap/ScrollTrigger").then(({ ScrollTrigger }) => {
         gsap.registerPlugin(ScrollTrigger);
@@ -43,54 +171,71 @@ export default function PotatoScrollSection() {
           ScrollTrigger.create({
             trigger: sectionRef.current,
             start: "top top",
-            end: "bottom bottom", // Scrubs exactly across the 500vh section height
+            end: "bottom bottom",
             scrub: 1,
             invalidateOnRefresh: true,
             onUpdate: (self) => {
               const progress = self.progress;
+              const state = scrollStateRef.current;
+              state.progress = progress;
 
-              // 0.0 to 0.15: Hero
+              let currentSrc = "/images/potato_hero.png";
+              let phase = "hero";
+              let frameIdx = 0;
+
               if (progress < 0.15) {
-                setPhase("hero");
-                setCurrentSrc("/images/potato_hero.png");
+                phase = "hero";
+                currentSrc = "/images/potato_hero.png";
+                frameIdx = 0;
                 setTextVisible(progress > 0.02);
-              }
-              // 0.15 to 0.55: Peel sequence (20 frames)
-              else if (progress >= 0.15 && progress < 0.55) {
+              } else if (progress >= 0.15 && progress < 0.55) {
                 const subProgress = (progress - 0.15) / 0.4;
                 const idx = Math.min(
                   Math.floor(subProgress * PEEL_FRAMES),
-                  PEEL_FRAMES - 1,
+                  PEEL_FRAMES - 1
                 );
-                setPhase("peel");
-                setCurrentSrc(peelPaths[idx]);
+                phase = "peel";
+                currentSrc = peelPaths[idx];
+                frameIdx = idx + 1;
                 setTextVisible(true);
-              }
-              // 0.55 to 0.90: Cut sequence (20 frames)
-              else if (progress >= 0.55 && progress < 0.9) {
+              } else if (progress >= 0.55 && progress < 0.9) {
                 const subProgress = (progress - 0.55) / 0.35;
                 const idx = Math.min(
                   Math.floor(subProgress * CUT_FRAMES),
-                  CUT_FRAMES - 1,
+                  CUT_FRAMES - 1
                 );
-                setPhase("cut");
-                setCurrentSrc(cutPaths[idx]);
+                phase = "cut";
+                currentSrc = cutPaths[idx];
+                frameIdx = idx + PEEL_FRAMES + 1;
+                setTextVisible(true);
+              } else {
+                const isSteam = progress > 0.95;
+                phase = isSteam ? "steam" : "cut";
+                currentSrc = cutPaths[CUT_FRAMES - 1];
+                frameIdx = CUT_FRAMES + PEEL_FRAMES + 1;
                 setTextVisible(true);
               }
-              // 0.90 to 1.0: Steam / Reveal
-              else {
-                setPhase(progress > 0.95 ? "steam" : "cut");
-                setCurrentSrc(cutPaths[CUT_FRAMES - 1]);
-                setTextVisible(true);
+
+              // Detect frame transitions during scrubbing
+              if (frameIdx !== state.frameIdx) {
+                if (phase === "cut" && frameIdx > state.frameIdx) {
+                  state.shakeProgress = 1.0; // Trigger camera shake
+                  spawnParticles("starch", 12); // Starch burst
+                } else if (phase === "peel" && frameIdx > state.frameIdx) {
+                  spawnParticles("peel", 6); // Peels peeling off
+                }
               }
+
+              state.phase = phase;
+              state.currentSrc = currentSrc;
+              state.frameIdx = frameIdx;
+              setPhase(phase);
             },
           });
         }, sectionRef);
 
-        // Force refresh after DOM settles and loading screen unmounts
         timers.push(setTimeout(() => ScrollTrigger.refresh(), 300));
         timers.push(setTimeout(() => ScrollTrigger.refresh(), 1000));
-        timers.push(setTimeout(() => ScrollTrigger.refresh(), 2500));
       });
     });
 
@@ -98,9 +243,190 @@ export default function PotatoScrollSection() {
       if (ctx) ctx.revert();
       timers.forEach((t) => clearTimeout(t));
     };
-  }, []);
+  }, [imagesLoaded]);
 
-  // Phase-based contextual text
+  // Canvas Continuous Render Loop (60 FPS particles, wiggles, and float)
+  useEffect(() => {
+    if (!imagesLoaded) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const resizeCanvas = () => {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      const ctx = canvas.getContext("2d");
+      ctx.scale(dpr, dpr);
+    };
+
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    const render = () => {
+      const rect = canvas.getBoundingClientRect();
+      const ctx = canvas.getContext("2d");
+      if (!ctx || rect.width === 0 || rect.height === 0) {
+        animationFrameRef.current = requestAnimationFrame(render);
+        return;
+      }
+
+      ctx.clearRect(0, 0, rect.width, rect.height);
+
+      const state = scrollStateRef.current;
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
+      
+      // 1. Draw dynamic shadow
+      drawDynamicShadow(ctx, cx, cy + (rect.height * 0.28), state.phase, state.progress);
+
+      // 2. Wiggle/Shake calculations
+      let shakeX = 0;
+      let shakeY = 0;
+      if (state.shakeProgress > 0) {
+        const amp = state.shakeProgress * 8;
+        shakeX = (Math.random() - 0.5) * amp;
+        shakeY = (Math.random() - 0.5) * amp;
+        state.shakeProgress -= 0.08; // Decay shake
+      }
+
+      // 3. Hover Floating simulation
+      const time = performance.now();
+      let floatY = Math.sin(time / 800) * 5;
+      if (state.phase === "cut") {
+        floatY = Math.sin(time / 800) * 1.5; // Dampen hover while slicing
+      }
+
+      // 4. Zoom factor calculations
+      let zoom = 1.0;
+      if (state.phase === "hero") {
+        zoom = 1.04 - (state.progress * 0.2); 
+      } else if (state.phase === "steam") {
+        const t = Math.max(0, (state.progress - 0.9) / 0.1);
+        zoom = 1.0 + t * 0.08; // Slow cinematic zoom-in on steam phase
+      }
+
+      // 5. Draw active image frame
+      const activeImg = loadedImagesRef.current[state.currentSrc];
+      if (activeImg) {
+        ctx.save();
+        ctx.translate(cx + shakeX, cy + shakeY + floatY);
+        ctx.scale(zoom, zoom);
+        
+        const aspect = activeImg.width / activeImg.height;
+        let drawWidth = rect.width * 0.72;
+        let drawHeight = drawWidth / aspect;
+        if (drawHeight > rect.height * 0.72) {
+          drawHeight = rect.height * 0.72;
+          drawWidth = drawHeight * aspect;
+        }
+
+        ctx.drawImage(activeImg, -drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight);
+        ctx.restore();
+      }
+
+      // 6. Draw and Update Active Particles (Peels, Starch, Salt, Herbs)
+      const particles = particlesRef.current;
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += p.gravity || 0;
+        p.vx *= p.friction || 1;
+        p.vy *= p.friction || 1;
+        p.rotation += p.rotSpeed || 0;
+        p.life -= p.decay || 0.01;
+
+        if (p.life <= 0 || p.y > rect.height + 20) {
+          particles.splice(i, 1);
+          continue;
+        }
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation);
+        ctx.globalAlpha = Math.max(0, p.life * p.opacity);
+
+        if (p.type === "peel") {
+          ctx.fillStyle = p.color;
+          ctx.beginPath();
+          ctx.ellipse(0, 0, p.size, p.size / 2.2, 0.4, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (p.type === "starch") {
+          ctx.fillStyle = p.color;
+          ctx.shadowBlur = 6;
+          ctx.shadowColor = p.color;
+          ctx.beginPath();
+          ctx.arc(0, 0, p.size, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (p.type === "salt") {
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+        } else if (p.type === "herb") {
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size / 2, -p.height / 2, p.size, p.height);
+        }
+
+        ctx.restore();
+      }
+
+      // 7. Ambient seasoning falling in Steam Phase
+      if (state.phase === "steam") {
+        // Continuous salt crystals
+        if (Math.random() < 0.14) {
+          particles.push({
+            x: Math.random() * rect.width,
+            y: -10,
+            vx: (Math.random() - 0.5) * 0.6,
+            vy: Math.random() * 1.5 + 1.2,
+            size: Math.random() * 1.8 + 1.6,
+            color: "#FFFFFF",
+            opacity: 0.95,
+            rotation: Math.random() * Math.PI * 2,
+            rotSpeed: (Math.random() - 0.5) * 0.05,
+            gravity: 0,
+            friction: 1.0,
+            type: "salt",
+            life: 1.0,
+            decay: 0.005,
+          });
+        }
+        // Continuous green herbs flakes (parsley)
+        if (Math.random() < 0.08) {
+          particles.push({
+            x: Math.random() * rect.width,
+            y: -10,
+            vx: (Math.random() - 0.5) * 1.0,
+            vy: Math.random() * 1.1 + 0.7,
+            size: Math.random() * 3 + 2,
+            height: Math.random() * 4 + 4,
+            color: ["#4CAF50", "#2E7D32", "#81C784", "#66BB6A"][Math.floor(Math.random() * 4)],
+            opacity: 0.88,
+            rotation: Math.random() * Math.PI * 2,
+            rotSpeed: (Math.random() - 0.5) * 0.08,
+            gravity: 0.015,
+            friction: 0.99,
+            type: "herb",
+            life: 1.0,
+            decay: 0.004,
+          });
+        }
+      }
+
+      animationFrameRef.current = requestAnimationFrame(render);
+    };
+
+    animationFrameRef.current = requestAnimationFrame(render);
+
+    return () => {
+      window.removeEventListener("resize", resizeCanvas);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, [imagesLoaded]);
+
+  // Phase texts
   const phaseText = {
     hero: {
       headline: "Each Potato Has Its Own Story",
@@ -128,38 +454,37 @@ export default function PotatoScrollSection() {
       ref={sectionRef}
       className="relative h-[500vh] bg-[#F8F5EC] w-full"
     >
-      {/* Sticky viewport container */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-[#F8F5EC]">
-        {/* Background transition: cream → warm golden on 'cut' phase */}
+        {/* Dynamic cream → warm golden transition background */}
         <div
           className={`absolute inset-0 transition-colors duration-1000 ${phase === "cut" || phase === "steam" ? "bg-[#F8F5EC]/40 bg-gradient-to-br from-[#F8F5EC] via-[#f4eedb] to-[#e8e1cf]" : "bg-[#F8F5EC]"}`}
         />
 
-        {/* Decorative left stripe (matches brochure motif) */}
+        {/* Decorative left stripe */}
         <div className="absolute left-0 top-0 bottom-0 w-3 md:w-4 flex flex-col z-20">
-          <div className="h-1/3 bg-[#3E7C(17)]" />
+          <div className="h-1/3 bg-[#3E7C17]" />
           <div className="h-1/3 bg-[#8BC34A]" />
           <div className="h-1/3 bg-[#4E342E]" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-full py-16">
-          {/* Potato image — left side */}
+          
+          {/* Potato Canvas — left side */}
           <div className="relative flex items-center justify-center h-[40vh] sm:h-[50vh] lg:h-[70vh] w-full max-w-[600px] mx-auto">
-            {/* Shadow base */}
-            <img
-              src="/images/shadow_base.png"
-              alt=""
-              className="absolute bottom-4 sm:bottom-8 lg:bottom-12 w-[70%] max-w-[400px] object-contain opacity-70 transform -translate-x-1/2 left-1/2 pointer-events-none transition-opacity duration-500"
-            />
+            
+            {!imagesLoaded ? (
+              <div className="flex flex-col items-center gap-3">
+                <div className="w-10 h-10 border-4 border-[#8BC34A] border-t-transparent rounded-full animate-spin" />
+                <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Loading Sequence...</span>
+              </div>
+            ) : (
+              <canvas
+                ref={canvasRef}
+                className="w-full h-full object-contain pointer-events-none select-none z-10"
+              />
+            )}
 
-            {/* Main potato / fries image */}
-            <img
-              src={currentSrc}
-              alt="Avantika Premium Potato Sequence"
-              className="absolute inset-0 w-full h-full object-contain filter drop-shadow-2xl pointer-events-none select-none"
-            />
-
-            {/* Wispy Hot Steam Animation Effect */}
+            {/* Wispy Hot Steam Animation Effect (layered over canvas) */}
             {phase === "steam" && (
               <div className="absolute inset-0 z-20 pointer-events-none select-none flex items-center justify-center">
                 <style dangerouslySetInnerHTML={{__html: `
@@ -197,7 +522,6 @@ export default function PotatoScrollSection() {
                   viewBox="0 0 100 100" 
                   className="w-[60%] h-[80%] overflow-visible filter blur-[5px] opacity-80"
                 >
-                  {/* Steam curl 1 */}
                   <path 
                     d="M 35 85 Q 22 55 38 25 T 28 0" 
                     fill="none" 
@@ -206,7 +530,6 @@ export default function PotatoScrollSection() {
                     strokeLinecap="round" 
                     className="steam-path-1"
                   />
-                  {/* Steam curl 2 */}
                   <path 
                     d="M 50 90 Q 62 60 48 30 T 58 0" 
                     fill="none" 
@@ -215,7 +538,6 @@ export default function PotatoScrollSection() {
                     strokeLinecap="round" 
                     className="steam-path-2"
                   />
-                  {/* Steam curl 3 */}
                   <path 
                     d="M 65 85 Q 52 50 68 20 T 58 0" 
                     fill="none" 
@@ -224,7 +546,6 @@ export default function PotatoScrollSection() {
                     strokeLinecap="round" 
                     className="steam-path-3"
                   />
-                  {/* Steam curl 4 */}
                   <path 
                     d="M 43 90 Q 32 65 45 35 T 35 5" 
                     fill="none" 
@@ -240,7 +561,6 @@ export default function PotatoScrollSection() {
 
           {/* Text — right side */}
           <div className="flex flex-col justify-center text-center lg:text-left px-4 sm:px-0">
-            {/* Section eyebrow label */}
             <div className="inline-flex items-center justify-center lg:justify-start gap-3 mb-4">
               <span className="w-2.5 h-2.5 rounded-full bg-[#8BC34A] animate-ping" />
               <span className="text-xs sm:text-sm font-extrabold text-[#8BC34A] tracking-widest uppercase">
@@ -249,8 +569,8 @@ export default function PotatoScrollSection() {
                   : phase === "peel"
                     ? "Quality Control"
                     : phase === "cut"
-                      ? "Export Ready"
-                      : "Product Reveal"}
+                    ? "Export Ready"
+                    : "Product Reveal"}
               </span>
             </div>
 
